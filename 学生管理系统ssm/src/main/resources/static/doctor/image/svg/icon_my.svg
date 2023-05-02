@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="51px" height="100px" viewBox="0 0 51 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>wode </title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="50%" y1="27.8540248%" x2="50%" y2="3.854593%" id="linearGradient-1">
+            <stop stop-color="#FF4F55" offset="0%"></stop>
+            <stop stop-color="#F97872" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="我的" transform="translate(-644.000000, -1200.000000)">
+            <g id="底部" transform="translate(0.000000, 1178.000000)">
+                <g id="我的" transform="translate(600.000000, 22.000000)">
+                    <g id="wode-" transform="translate(45.000000, 0.000000)">
+                        <rect id="Rectangle-2" x="0" y="0" width="50" height="100"></rect>
+                        <path d="M38.0500897,48 C29.8740841,48 18.3520112,48 2,48 C2.93340129,37.2893877 8.74171115,28.4616935 17.5575713,25.2139723 C14.3874096,22.8820834 12.3262796,19.0991412 12.3262796,14.8289018 C12.3262796,7.74369499 18.0004975,2 25,2 C31.9995025,2 37.6737204,7.74369499 37.6737204,14.8289018 C37.6737204,19.0991412 35.6125904,22.8820834 32.4424287,25.2139723 C41.2582889,28.4616935 47.0665987,37.2893877 48,48" id="Combined-Shape" stroke="#B2B2B2" stroke-width="4" stroke-linecap="round"></path>
+                        <path d="M0,100 C1.01456661,88.3664059 7.3279469,78.7420171 16.9104035,75.2144251 C13.4645756,72.6815869 11.2242169,68.5726514 11.2242169,63.9344262 C11.2242169,56.2386551 17.3918451,50 25,50 C32.6081549,50 38.7757831,56.2386551 38.7757831,63.9344262 C38.7757831,68.5726514 36.5354244,72.6815869 33.0895965,75.2144251 C42.6720531,78.7420171 48.9854334,88.3664059 50,100 C28.5159501,100 11.8492835,100 0,100 Z" id="Combined-Shape" fill="url(#linearGradient-1)"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

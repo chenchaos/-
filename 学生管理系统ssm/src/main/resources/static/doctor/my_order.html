@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+        <title>信蜂</title>
+        <link rel="stylesheet" type="text/css" href="css/public.css" />
+        <link rel="stylesheet" type="text/css" href="css/my_publish.css" />
+        <script type="text/javascript" src="js/fontSize.js"></script>
+        <script type="text/javascript" src="js/public.js"></script>
+    </head>
+    <body class="body-bg-color">
+    	<div class="whole">
+            <div class="common-animate animated flipInX">
+				<!--header-->
+				<div class="common-header">
+					<a class="back-btn" href="javascript:history.back(-1)">
+						<img src="image/svg/icon_back.svg" />
+					</a>
+	                <div class="header-text">我的就诊订单</div>
+	            </div>
+                <!--内容-->
+                <div class="content">
+                    <ul class="contentUl">
+                        <li>
+                            <div class="content-header">
+                                <div class="header-left">
+                                    <a href="javascript:void(0)" class="header-img">
+                                        <img src="image/jpg/head_img.jpg" />
+                                    </a>
+                                    <div class="header-txt">
+                                        <a href="javascript:void(0)">追剧小毛驴</a>
+                                        <span>今天10:18发布</span>
+                                    </div>
+                                    <div class="red-envelope animated infinite tada delay-100s">
+                                        <img src="image/svg/red_envelope.svg" />
+                                    </div>
+                                </div>
+                                <div class="header-right">
+                                    <span class="delete">
+										<img src="image/svg/icon_delete.svg" />
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="set-top"><img src="image/svg/icon_top.svg" /></div>
+                            <div class="content-cxt">
+                                <a href="index_detail.html" class="content-text">
+                                    <span>
+                                        <i>#商业经营 商铺/门面#</i>环球金融城办公写字楼转让，230平，精装修，办公家具齐全，低价转让，机会不容错过，有意联系我，李经理。
+                                    </span>
+                                </a>
+                                <div class="slider-image">
+                                    <span><img src="image/jpg/head_img.jpg" /></span>
+                                </div>
+                                <div class="coordinate index-coor">
+                                    <span><img src="image/svg/icon_coordinates.svg" /></span>
+                                    <a href="javascript:void(0)">北京市通州区物资学院路</a>
+                                </div>
+                                <div class="number-container">
+                                    <a href="javascript:void(0)">
+                                        <span><img src="image/svg/icon_view.svg"></span>
+                                        <i>88</i>
+                                    </a>
+                                    <a href="javascript:void(0)">
+                                        <span><img src="image/svg/icon_comments.svg"></span>
+                                        <i>88</i>
+                                    </a>
+                                    <a href="javascript:void(0)">
+                                        <span><img src="image/svg/icon_envelope.svg"></span>
+                                        <i>88</i>
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
+
+
+
+                        <li>
+                            <div class="content-header">
+                                <div class="header-left">
+                                    <a href="javascript:void(0)" class="header-img">
+                                        <img src="image/jpg/head_img.jpg" />
+                                    </a>
+                                    <div class="header-txt">
+                                        <a href="javascript:void(0)">追剧小毛驴</a>
+                                        <span>今天10:18发布</span>
+                                    </div>
+                                    <div class="red-envelope animated infinite tada delay-100s">
+                                        <img src="image/svg/red_envelope.svg" />
+                                    </div>
+                                </div>
+                                <div class="header-right">
+                                    <span class="delete">
+										<img src="image/svg/icon_delete.svg" />
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="set-top"><img src="image/svg/icon_top.svg" /></div>
+                            <div class="content-cxt">
+                                <a href="index_detail.html" class="content-text">
+                                    <span>
+                                        <i>#商业经营 商铺/门面#</i>环球金融城办公写字楼转让，230平，精装修，办公家具齐全，低价转让，机会不容错过，有意联系我，李经理。
+                                    </span>
+                                </a>
+                                <div class="slider-image">
+                                    <span><img src="image/jpg/head_img.jpg" /></span>
+                                </div>
+                                <div class="coordinate index-coor">
+                                    <span><img src="image/svg/icon_coordinates.svg" /></span>
+                                    <a href="javascript:void(0)">北京市通州区物资学院路</a>
+                                </div>
+                                <div class="number-container">
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+<!--                    <div class="loading-more">上拉加载更多...</div>-->
+                </div>
+
+        		<!-- <div class="loading animated infinite rotateIn delay-5s">
+        			<img src="./image/jpg/loading.png" />
+        		</div> -->
+            </div>
+    	</div>
+        <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+        <script type="text/javascript" >
+            function drugOrder(order_idz){
+                var ccsUrl = "http://localhost:8088/";
+                window.location.href =ccsUrl+"/doctor/drug_order.html?order_id="+order_idz;
+            }
+            function chat(order_idz){
+                sessionStorage.setItem("call_order_id",order_idz);
+                sessionStorage.removeItem("call_time")
+                var ccsUrl = "http://localhost:8088/";
+                window.location.href =ccsUrl+"/doctor/chat/index.html";
+            }
+            $(function (){
+                var ccsUrl = "http://localhost:8088/";
+                var htmlStr =""
+                    if(!sessionStorage.getItem("user_id")){
+                        alert('请登陆') ;
+                        window.location.href=ccsUrl+'/doctor/login.html'
+                    }
+                    var param ={"user_id":sessionStorage.getItem("user_id")}
+                    $.ajax({
+                        type: "POST",
+                        contentType: "application/json; charset=utf-8",
+                        url: "/getMyOrder",
+                        data: JSON.stringify(param),
+                        cache: false,
+                        success:  function(data){
+                          var datas =  data.orderList
+                            for(var i=0;i<datas.length;i++){
+                                var data =datas[i]
+                                var str =" <li>\n" +
+                                    "                            <div class=\"content-header\">\n" +
+                                    "                                <div class=\"header-left\">\n" +
+                                    "                                    <a href=\"javascript:void(0)\" class=\"header-img\">\n" +
+                                    "                                        <img style='height: 100%' src=\""+data.doctorTitImg+"\" />\n" +
+                                    "                                    </a>\n" +
+                                    "                                    <div class=\"header-txt\">\n" +
+                                    "                                        <a href=\"javascript:void(0)\">"+data.phone+"</a>\n" +
+                                    "                                        <span>"+data.create_time+"</span>\n" +
+                                    "                                    </div>\n" +
+                                    "                                    <div style='margin-left: 1.9rem;margin-top: 0.3rem;height: 0.8rem;width: 0.8rem' onclick=chat(\'"+data.order_id+"\') class=\"red-envelope animated infinite tada delay-100s call\">\n" +
+                                    "                                        <img src=\"image/svg/f202e05cdfb6cd3b8b266a5d69f9c3b8.jpeg\" />\n" +
+                                    "                                    </div>\n" +
+                                    "                                    <div style='margin-left: 3.5rem;margin-top: -1rem;height: 0.7rem;width: 0.7rem' class=\"red-envelope animated infinite tada delay-100s call\">\n" +
+                                    "                                       <button type=\"button\" class=\"btn btn-primary\" onclick=drugOrder(\'"+data.order_id+"\')>查看医生药方</button> " +
+                                    "                                    </div>\n" +
+                                    "                                </div>\n" +
+                                    "                                <div class=\"header-right\">\n" +
+                                    "                                    <span class=\"delete\">\n" +
+                                    // "\t\t\t\t\t\t\t\t\t\t<img src=\"image/svg/icon_delete.svg\" />\n" +
+                                    "                                    </span>\n" +
+                                    "                                </div>\n" +
+                                    "                            </div>\n" +
+                                    "                            <div class=\"set-top\"><img src=\"image/svg/icon_top.svg\" /></div>\n" +
+                                    "                            <div class=\"content-cxt\">\n" +
+
+                                    "                                <a  class=\"content-text\">\n" +
+                                    "                                    <span>\n" +
+                                    "                                        <i>生病时间:</i>"+data.fall_time +
+                                    "                                    </span>\n" +
+                                    "                                    <span>\n" +
+                                    "                                        <i>是否就症过:</i>"+data.is_see +
+                                    "                                    </span>\n" +
+                                    "                                    <span>\n" +
+                                    "                                        <i>病症描述:</i>"+data.detail +
+                                    "                                    </span>\n" +
+                                    "                                <div class=\"number-container\">\n" +
+                                    "                                </div>\n" +
+                                    "                                    <span>\n" +
+                                    "                                        <i>分配医生:</i>"+data.doctor_name +
+                                    "                                    </span>\n" +
+                                    "                                    <span>\n" +
+                                    "                                        <i>医生介绍:</i>" +data.doctor_detail+
+                                    "                                    </span>\n" +
+                                    "                                </a>\n" +
+                                    "                                <div class=\"slider-image\">\n" +
+                                    "                                    <span style='max-width: 2.3rem;' ><img  style='min-height: 2rem;' src=\""+data.doctorImgList[0]+"\" /></span>\n" +
+                                    "                                    <span style='max-width: 2.3rem;' ><img   style='min-height: 2rem;' src=\""+data.doctorImgList[1]+"\" /></span>\n" +
+                                    "                                    <span style='max-width: 2.3rem;' ><img   style='min-height: 2rem;' src=\""+data.doctorImgList[2]+"\" /></span>\n" +
+                                    "                                </div>\n" +
+                                    "                                <div class=\"coordinate index-coor\">\n" +
+                                    "                                    <span><img src=\"image/svg/icon_coordinates.svg\" /></span>\n" +
+                                    "                                    <a href=\"javascript:void(0)\">北京市通州区物资学院路</a>\n" +
+                                    "                                </div>\n" +
+                                    "                                <div class=\"number-container\">\n" +
+                                    "                                </div>\n" +
+                                    "                            </div>\n" +
+                                    "                        </li>"
+                                htmlStr+=str;
+                            }
+                            $(".contentUl").html(htmlStr)
+                        },
+                        error: function() {
+                            console.log('失败');
+                        }
+                })
+            })
+        </script>
+
+    </body>
+</html>

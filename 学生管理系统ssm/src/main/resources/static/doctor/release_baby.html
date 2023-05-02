@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <title>信蜂</title>
+    <link rel="stylesheet" type="text/css" href="css/public.css"/>
+    <link rel="stylesheet" type="text/css" href="css/release_baby.css"/>
+    <link rel="stylesheet" type="text/css" href="css/mobileSelect.css"/>
+    <script type="text/javascript" src="js/fontSize.js"></script>
+    <script type="text/javascript" src="js/public.js"></script>
+    <script type="text/javascript" src="js/mobileSelect.js"></script>
+
+
+</head>
+<body class="body-bg-color">
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<div class="whole">
+
+    <div class="common-animate animated flipInX">
+        <!--header-->
+        <div class="common-header">
+            <a class="back-btn" href="javascript:history.back(-1)">
+                <img src="image/svg/icon_back.svg"/>
+            </a>
+            <div class="header-text">病情挂号</div>
+        </div>
+
+        <!--内容-->
+        <div class="release-container">
+            <div class="release-camera" style="width: 100%">
+                <!--                <div class="camera-btn" >-->
+                <!--                    <span><img src="image/svg/icon_camera.svg">-->
+                <!--					</span>-->
+                <!--                    <small>添加照片</small>-->
+                <img style="object-fit: contain;width: 100%" src="/doctor/image/svg/WechatIMG1290.png">
+                <!--                </div>-->
+            </div>
+
+            <div class="release-input">
+                <div class="to-top-list">
+                    <div class="to-top ">
+                        <div class="top-title">症状发生时长</div>
+                        <div class="top-title" id="trigger1">请选择</div>
+                    </div>
+                </div>
+            </div>
+
+			<div class="release-input">
+            <div class="to-top-list">
+                <div class="to-top ">
+                    <div class="top-title">是否就症过</div>
+                    <div class="top-title" id="trigger2">请选择</div>
+                </div>
+            </div>
+			</div>
+
+            <div class="release-input">
+                <textarea class="text" placeholder="在这里描述一下您要就症的内容" style="height: 7.5rem"></textarea>
+            </div>
+        </div>
+        <script type="text/javascript">
+
+            var mobileSelect1 = new MobileSelect({
+                trigger: '#trigger1',
+                title: '单项选择',
+                wheels: [
+                    {data: ['一个月内', '三个月内', '三个月以上', '一年以上']}
+                ],
+                transitionEnd: function (indexArr, data) {
+                    //console.log(data);
+                },
+                callback: function (indexArr, data) {
+                    console.log(data);
+                }
+            });
+            var mobileSelect2 = new MobileSelect({
+                trigger: '#trigger2',
+                title: '单项选择',
+                wheels: [
+                    {data: ['是', '否']}
+                ],
+                transitionEnd: function (indexArr, data) {
+                    //console.log(data);
+                },
+                callback: function (indexArr, data) {
+                    console.log(data);
+                }
+            });
+
+            $(function (){
+                var ccsUrl = "http://localhost:8088/";
+                $(".pay").click(function (){
+                    if(!sessionStorage.getItem("user_id")){
+                      alert('请登陆') ;
+                      window.location.href=ccsUrl+'doctor/login.html'
+                        return
+                    }
+                   var fall_time = $('#trigger1').html()
+                    var is_see = $('#trigger2').html()
+                    var user_id = sessionStorage.getItem("user_id")
+                    var detail =$('.text').val()
+                    if(fall_time==null||is_see==null||detail==null){
+                        alert('请填写完整表单信息')
+                        return;
+                    }
+                    var param ={"fall_time":fall_time,"is_see":is_see,"user_id":user_id,"detail":detail}
+                    $.ajax({
+                        type: "POST",
+                        contentType: "application/json; charset=utf-8",
+                        url: "/addOrder",
+                        data: JSON.stringify(param),
+                        cache: false,
+                        success:  function(data,status){
+                            alert(data.msg)
+                             window.location.href=ccsUrl+'/doctor/my_order.html'
+                        },
+                        error: function() {
+                            console.log('失败');
+                        }
+                    });
+                })
+            })
+        </script>
+
+    </div>
+
+</div>
+
+<!--支付方式弹出层-->
+<div class="pay-list hidden-class" id="payList">
+    <div class="list-container">
+        <div class="pay-title">选择支付方式</div>
+        <div class="pay-container">
+            <div class="list-pay state-select">
+                <div class="list-left">
+								<span>
+									<img src="image/other/wechat_logo.svg"/>
+								</span>
+                    <small>微信</small>
+                </div>
+                <div class="list-right">
+                    <img src="image/svg/icon_blue_check.svg"/>
+                </div>
+            </div>
+            <div class="list-pay">
+                <div class="list-left">
+								<span>
+									<img src="image/other/zfb_logo.svg"/>
+								</span>
+                    <small>支付宝</small>
+                </div>
+                <div class="list-right">
+                    <img src="image/svg/icon_blue_check.svg"/>
+                </div>
+            </div>
+            <div class="list-pay">
+                <div class="list-left">
+								<span>
+									<img src="image/other/yue_logo.svg"/>
+								</span>
+                    <small>余额</small>
+                </div>
+                <div class="list-right">
+                    <img src="image/svg/icon_blue_check.svg"/>
+                </div>
+            </div>
+        </div>
+        <div class="pay-button">
+            <div class="left-btn" id="cancels">取消</div>
+            <div class="right-btn pay">支付</div>
+        </div>
+    </div>
+</div>
+
+<div class="money-relase money-state">立即就症</div>
+</div>
+
+<script type="text/javascript">
+    //取消
+    var cancels = document.getElementById('cancels');
+    cancels.onclick = function () {
+        payList.className = "pay-list hidden-class";
+    }
+    //点击发布
+    var payList = document.getElementById('payList');
+    var moneyState = document.querySelector('.money-state');
+    console.log(moneyState);
+    moneyState.onclick = function () {
+        console.log('123456');
+        payList.className = "pay-list animated bounceIn";
+    }
+    // 发福利和置顶按钮
+    var buttons = document.querySelector('.top-button');
+    buttons.onclick = function () {
+        if (this.parentNode.parentNode.classList.contains('state-open')) {
+            this.parentNode.parentNode.className = "common-list";
+        } else {
+            this.parentNode.parentNode.className = "common-list state-open";
+        }
+    }
+</script>
+
+</body>
+</html>

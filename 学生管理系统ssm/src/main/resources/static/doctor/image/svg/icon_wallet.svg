@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="60px" height="60px" viewBox="0 0 60 60" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>icon_wallet</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="22.3618575%" y1="8.43568217%" x2="50%" y2="50%" id="linearGradient-1">
+            <stop stop-color="#FD8265" offset="0%"></stop>
+            <stop stop-color="#FF382F" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="57.3252797%" y1="89.2928407%" x2="14.6616324%" y2="8.83374017%" id="linearGradient-2">
+            <stop stop-color="#FFFFFF" offset="0%"></stop>
+            <stop stop-color="#FFFFFF" stop-opacity="0.649966033" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="我的-copy-2" transform="translate(-90.000000, -450.000000)">
+            <g id="个人信息" transform="translate(20.000000, 270.000000)">
+                <g id="icon_wallet" transform="translate(70.000000, 180.000000)">
+                    <circle id="Oval-5" fill="url(#linearGradient-1)" cx="30" cy="30" r="30"></circle>
+                    <g id="Group" transform="translate(15.000000, 15.000000)" fill-rule="nonzero">
+                        <path d="M29.9999664,4.79998658 C29.9999664,2.215381 27.7913674,0 25.2147077,0 L4.78525878,0 C2.20859904,0 0,2.215381 0,4.79998658 L0,25.1999799 C0,27.784619 2.20859904,30 4.78525878,30 L25.1226589,30 C27.6993522,30 29.9079513,27.7845855 29.9079513,25.1999799 L29.9079513,20.1230749 L19.1410687,20.1230749 C19.1410687,20.0307687 14.9999832,20.3999933 14.9999832,15.2307486 C14.9999832,9.69231285 19.5091965,10.0615374 19.5091965,10.0615374 L30,10.0615374 L30,4.79998658 L29.9999664,4.79998658 Z" id="Shape" fill="#FFFFFF"></path>
+                        <path d="M16.9565217,15.5593101 C16.9565217,19.2839871 20.0992474,18.901976 20.0992474,18.901976 L29.3478261,18.901976 L29.3478261,11.7391304 L20.3686286,11.7391304 C20.3686286,11.8346679 16.9565545,11.5481249 16.9565545,15.5593101 L16.9565217,15.5593101 Z M20.4584441,13.9357633 C21.0869893,13.9357633 21.6257516,14.5087798 21.6257516,15.1772991 C21.6257516,15.6548129 21.3563377,16.0368586 20.9971737,16.3233669 C20.6380097,16.5143724 20.189063,16.5143724 19.8298663,16.3233669 C19.470735,16.1323614 19.2013539,15.6548129 19.2013539,15.1772991 C19.2911367,14.5087798 19.829899,13.9357633 20.4584441,13.9357633 Z" id="Shape" fill="url(#linearGradient-2)"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

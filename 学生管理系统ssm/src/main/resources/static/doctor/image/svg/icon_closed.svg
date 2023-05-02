@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="31px" height="30px" viewBox="0 0 31 30" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>icon_closed</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="红包-金额" transform="translate(-570.000000, -377.000000)">
+            <g id="icon_closed" transform="translate(565.000000, 372.000000)">
+                <g>
+                    <rect id="Rectangle-7" x="0" y="0" width="40" height="40"></rect>
+                    <g id="Group-2" transform="translate(4.000000, 4.000000)" fill="#B6282A">
+                        <rect id="Rectangle-5" transform="translate(16.443651, 16.272078) rotate(-45.000000) translate(-16.443651, -16.272078) " x="14.4436508" y="-3.72792206" width="4" height="40" rx="2"></rect>
+                        <rect id="Rectangle-5" transform="translate(16.443651, 16.272078) rotate(-315.000000) translate(-16.443651, -16.272078) " x="14.4436508" y="-3.72792206" width="4" height="40" rx="2"></rect>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

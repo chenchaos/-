@@ -1,0 +1,19 @@
+.feedback-container{
+	overflow: hidden;
+	padding: 0.2rem;
+}
+.feedback-container textarea{
+	width: 100%;
+	height: 5rem;
+	background-color: #fff;
+	border-radius: 0.1rem;
+	border: none;
+	outline: none;
+	padding: 0.3rem;
+}
+.feedback-container span{
+	font-size: 0.24rem;
+	display: block;
+	color: #999999;
+	padding: 0.3rem 0.2rem;
+}

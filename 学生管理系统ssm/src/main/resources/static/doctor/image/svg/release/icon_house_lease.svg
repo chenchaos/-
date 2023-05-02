@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="90px" height="90px" viewBox="0 0 90 90" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>房屋租赁</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="22.34375%" y1="11.3690476%" x2="77.7008929%" y2="88.3779762%" id="linearGradient-1">
+            <stop stop-color="#4667FB" offset="0%"></stop>
+            <stop stop-color="#634FFD" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="74.4381592%" id="linearGradient-2">
+            <stop stop-color="#FFFFFF" offset="0%"></stop>
+            <stop stop-color="#FFFFFF" stop-opacity="0.799394248" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="84.510449%" id="linearGradient-3">
+            <stop stop-color="#FFFFFF" stop-opacity="0.66185462" offset="0%"></stop>
+            <stop stop-color="#FFFFFF" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="发布-copy-4" transform="translate(-180.000000, -683.000000)">
+            <g id="4" transform="translate(19.000000, 683.000000)">
+                <g id="房屋租赁" transform="translate(161.000000, 0.000000)">
+                    <g>
+                        <circle id="Oval" fill="url(#linearGradient-1)" cx="45" cy="45" r="45"></circle>
+                        <g id="Group-6" transform="translate(23.000000, 21.000000)">
+                            <path d="M14,12 L30,12 L30,4 C30,2.8954305 29.1045695,2 28,2 L16,2 C14.8954305,2 14,2.8954305 14,4 L14,12 Z" id="Rectangle-5" stroke="url(#linearGradient-2)" stroke-width="4"></path>
+                            <circle id="Oval-2" fill="url(#linearGradient-3)" cx="12" cy="44" r="4"></circle>
+                            <circle id="Oval-2" fill="url(#linearGradient-3)" cx="32" cy="44" r="4"></circle>
+                            <path d="M3,10 L41,10 C42.6568542,10 44,11.3431458 44,13 L44,41 C44,42.6568542 42.6568542,44 41,44 L3,44 C1.34314575,44 2.02906125e-16,42.6568542 0,41 L0,13 C-2.02906125e-16,11.3431458 1.34314575,10 3,10 Z M12.5,18 C11.1192881,18 10,19.1192881 10,20.5 L10,33.5 C10,34.8807119 11.1192881,36 12.5,36 C13.8807119,36 15,34.8807119 15,33.5 L15,20.5 C15,19.1192881 13.8807119,18 12.5,18 Z M31.5,18 C30.1192881,18 29,19.1192881 29,20.5 L29,33.5 C29,34.8807119 30.1192881,36 31.5,36 C32.8807119,36 34,34.8807119 34,33.5 L34,20.5 C34,19.1192881 32.8807119,18 31.5,18 Z" id="Combined-Shape" fill="#FFFFFF"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

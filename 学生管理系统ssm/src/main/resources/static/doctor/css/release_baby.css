@@ -1,0 +1,265 @@
+.release-container{
+	overflow: hidden;
+	padding-bottom: 1.2rem;
+}
+.release-camera{
+	padding: 0.5rem 0;
+	background-color: #fff;
+}
+.camera-btn{
+	margin: 0 auto;
+	text-align: center;
+}
+.camera-btn span{
+	display: inline-block;
+	width: 0.87rem;
+	height: 0.71rem;
+	overflow: hidden;
+}
+.camera-btn span img{
+	width: 100%;
+}
+.camera-btn small{
+	display: block;
+	font-size: 0.3rem;
+	color: #373737;
+}
+.release-input{
+	overflow: hidden;
+	background-color: #fff;
+	margin-top: 0.2rem;
+	padding: 0 0.3rem;
+	box-sizing: border-box;
+}
+.release-input textarea{
+	width: 100%;
+	height: 2.82rem;
+	overflow: hidden;
+	padding: 0.3rem;
+	box-sizing: border-box;
+	font-size: 0.26rem;
+	color: #AAAAAA;
+	border: none;
+	outline: none;
+}
+.index-coor {
+	padding: 0.2rem 0;
+}
+.tel-number{
+	overflow: hidden;
+	padding: 0.3rem 0;
+}
+.tel-number span{
+	float: left;
+	width: 0.3rem;
+	height: 0.3rem;
+	overflow: hidden;
+	margin-right: 0.1rem;
+	margin-top: 0.05rem;
+}
+.tel-number span img{
+	width: 100%;
+}
+.tel-number input{
+	border: none;
+	outline: none;
+	font-size: 0.28rem;
+}
+.common-list{
+	overflow: hidden;
+	padding: 0 0.3rem;
+	background-color: #fff;
+	margin-top: 0.2rem;
+}
+.to-top{
+	overflow: hidden;
+	padding: 0.23rem 0;
+	display: flex;
+	justify-content: space-between;
+	background-color: #fff;
+}
+.top-title{
+	font-size: 0.28rem;
+	color: #333333;
+	align-self: center;
+}
+.top-time{
+	font-size: 0.28rem;
+	color: #999999;
+	display: flex;
+}
+.top-time small{
+	font-size: 0.28rem;
+	display: inline-block;
+	align-self: center;
+}
+.top-time span{
+	display: inline-block;
+	width: 0.2rem;
+	height: 0.28rem;
+	overflow: hidden;
+	margin-left: 0.2rem;
+	align-self: center;
+}
+.top-time input{
+	border: none;
+	outline: none;
+	text-align: right;
+}
+.top-time span img{
+	width: 100%;
+}
+.top-button{
+	width: 0.84rem;
+	height: 0.5rem;
+	border-radius: 50px;
+	border:2px solid rgba(221,221,221,1);
+	align-self: center;
+}
+.top-button span{
+	display: inline-block;
+	width: 0.48rem;
+	height: 0.48rem;
+	border-radius: 50%;
+	box-shadow:0px 1px 1px 0px rgba(0,0,0,0.5);
+	position: relative;
+	transition: all .3s ease-in-out;
+	-webkit-transition: all .3s ease-in-out;
+	-moz-transition: all .3s ease-in-out;
+	-ms-transition: all .3s ease-in-out;
+	background-color: #fff;
+}
+.check-container{
+	overflow: hidden;
+	padding: 0.3rem;
+}
+.check-container input{
+	display: none;
+}
+.check-container input:checked ~ label{
+	display: inline-block;
+}
+.check-container label span{
+	float: left;
+	width: 0.29rem;
+    height: 0.29rem;
+	overflow: hidden;
+}
+.check-container label span img{
+	width: 100%;
+}
+.check-container label small{
+	font-size: 0.24rem;
+	color: #AAAAAA;
+	margin-left: 0.2rem;
+}
+.check-container label small a{
+	color: #2B8EFE;
+}
+
+.to-top-list .to-top{
+	margin: 0;
+}
+.to-top-list{
+	overflow: hidden;
+}
+.state-open .to-top .top-button span{
+	margin-left: 0.35rem;
+}
+.state-open .to-top .top-button{
+	border:2px solid rgba(8,191,2,1);
+	background-color: #08BF02;
+}
+
+.pay-list{
+	position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 8888;
+    top: 0;
+    left: 0;
+    background-color: rgba(0,0,0,0.4);
+}
+.list-container{
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	background-color: #fff;
+}
+.pay-title{
+	width: 100%;
+	text-align: center;
+	font-size: 0.34rem;
+	color: #333333;
+	padding: 0.25rem 0;
+	border-bottom: 1px solid #DFDFDF;
+}
+.pay-container{
+	overflow: hidden;
+	padding: 0 0.3rem;
+}
+.list-pay{
+	display: flex;
+	justify-content: space-between;
+	overflow: hidden;
+	padding: 0.3rem 0;
+	border-bottom: 1px solid #DFDFDF;
+}
+.list-pay:last-child{
+	border-bottom: 1px solid transparent;
+}
+.pay-button{
+	overflow: hidden;
+	border-top: 1px solid #DFDFDF;
+}
+.list-left{
+	overflow: hidden;
+	display: flex;
+}
+.list-left span{
+	display: inline-block;
+	width: 0.4rem;
+	height: 0.4rem;
+	overflow: hidden;
+	align-self: center;
+}
+.list-left span img{
+	width: 100%;
+}
+.list-left small{
+	display: inline-block;
+	font-size: 0.3rem;
+	color: #333333;
+	align-self: center;
+	margin-left: 0.2rem;
+}
+.list-right{
+	display: none;
+	width: 0.3rem;
+	height: 0.21rem;
+	overflow: hidden;
+	align-self: center;
+}
+.state-select .list-right{
+	display: inline-block;
+}
+.list-right img{
+	display: flex;
+	width: 100%;
+}
+.pay-button{
+	overflow: hidden;
+	width: 100%;
+}
+.pay-button >div{
+	float: left;
+	width: 50%;
+	padding: 0.24rem 0;
+	font-size: 0.28rem;
+	color: #999999;
+	text-align: center;
+}
+.right-btn{
+	color: #2B8EFE !important;
+}

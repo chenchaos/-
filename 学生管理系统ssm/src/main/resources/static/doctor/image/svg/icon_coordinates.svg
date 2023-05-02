@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="19px" height="24px" viewBox="0 0 19 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>坐标</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="首页" transform="translate(-33.000000, -967.000000)">
+            <g id="内容1" transform="translate(0.000000, 452.000000)">
+                <g id="坐标-fill" transform="translate(30.000000, 512.000000)">
+                    <g id="Group-35" transform="translate(0.000000, 3.000000)">
+                        <g id="坐标">
+                            <g>
+                                <rect id="Rectangle-13" x="0" y="0" width="24" height="24"></rect>
+                                <path d="M12.497679,0 C7.26142194,0 3,4.22960263 3,9.42676138 C3,14.4442311 11.5135598,23.3549626 11.8756413,23.7327702 C12.0381139,23.9032444 12.2655754,24 12.502321,24 C12.5069631,24 12.5162473,24 12.5208893,24 C12.7622771,24 12.9943806,23.8894221 13.1522111,23.7051257 L16.0999267,20.3555385 C20.0178353,15.5960837 22,11.9193703 22,9.43136879 C22,4.22960263 17.7385781,0 12.497679,0 Z M12.497679,13.7116529 C10.111654,13.7116529 8.18055216,11.7949703 8.18055216,9.42676138 C8.18055216,7.0585525 10.111654,5.14186984 12.497679,5.14186984 C14.8837039,5.14186984 16.8148058,7.0585525 16.8148058,9.42676138 C16.8148058,11.7949703 14.8837039,13.7116529 12.497679,13.7116529 Z" id="Shape" fill="#AAAAAA" fill-rule="nonzero"></path>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

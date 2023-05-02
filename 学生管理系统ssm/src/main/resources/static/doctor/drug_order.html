@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>药品订单</title>
+  <link rel="stylesheet" href="css/order.css">
+  <link rel="stylesheet" href="./css/base.css">
+  <link rel="stylesheet" href="./css/orders.css">
+</head>
+<body>
+<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+<script type="text/javascript">
+  function getUrlParams(name) {
+    var url_string = window.location.href;
+    var url = new URL(url_string);
+    var c = url.searchParams.get(name);
+    return c;
+  }
+  //支付
+  function pay(){
+    var z = getUrlParams("order_id");
+    var param ={"order_id":z}
+    $.ajax({
+      type: "POST",
+      contentType: "application/json; charset=utf-8",
+      url: "/payDrug",
+      data: JSON.stringify(param),
+      cache: false,
+      success:  function(data){
+       alert(data.msg)
+        init();
+      },
+      error: function() {
+        console.log('失败');
+      }
+    })
+  }
+
+  function init(){
+    //初始化订单药品
+    var z = getUrlParams("order_id");
+    var param ={"order_id":z}
+    $.ajax({
+      type: "POST",
+      contentType: "application/json; charset=utf-8",
+      url: "/getDrugOrder",
+      data: JSON.stringify(param),
+      cache: false,
+      success:  function(data){
+        var htmlStr =''
+        var datas =  data.rows
+        for(var i=0;i<datas.length;i++){
+          var data =datas[i]
+          var str ="<div class=\"pannel goods\">\n" +
+                  "    <div class=\"pic\">\n" +
+                  "      <a href=\"#\"><img src=\" "+data.img+" \" alt=\"图片加载不出来\"></a>\n" +
+                  "    </div>\n" +
+                  "    <div class=\"info\">\n" +
+                  "      <div class=\"top\">\n" +
+                  "        中山大学医药库量\n" +
+                  "        中山大学医药厂生产   \n" +data.name+
+                  "      </div>\n" +
+                  "      <div class=\"bottom\">\n" +
+                  "        <span class=\"red\">￥<i>"+data.price+"</i></span>\n" +
+                  "      </div>\n" +
+                  "    </div>\n" +
+                  "    <div class=\"count\">\n" +
+                  "      <span>x<i>1</i></span>\n" +
+                  "    </div>\n" +
+                  "  </div>"
+          htmlStr+=str;
+        }
+        $(".main2").html(htmlStr);
+        if(datas[0].is_pay==1){
+          $(".left").html('<a >支付完成</a>');
+          $(".right").html('<a href="my_order.html">返回</a>');
+        }
+      },
+      error: function() {
+        console.log('失败');
+      }
+    })
+  }
+  $(function (){
+   init();
+
+  })
+</script>
+<!-- 主体部分 内容随着手指滑动而滑动 -->
+<div class="main">
+
+  <div class="main2">
+  <!-- 商品购物信息 -->
+  <div class="pannel goods">
+    <div class="pic">
+      <a href="#"><img src="./uploads/pic.png" alt="图片加载不出来"></a>
+    </div>
+    <div class="info">
+      <div class="top">
+        康尔贝 非接触式红外体温仪
+        领券立减30元 婴儿级材质 测温…
+      </div>
+      <div class="bottom">
+        <span class="red">￥<i>266.00</i></span>
+      </div>
+    </div>
+    <div class="count">
+      <span>x<i>1</i></span>
+    </div>
+  </div>
+
+    <div class="pannel goods">
+      <div class="pic">
+        <a href="#"><img src="./uploads/pic.png" alt="图片加载不出来"></a>
+      </div>
+      <div class="info">
+        <div class="top">
+          康尔贝 非接触式红外体温仪
+          领券立减30元 婴儿级材质 测温…
+        </div>
+        <div class="bottom">
+          <span class="red">￥<i>266.00</i></span>
+        </div>
+      </div>
+      <div class="count">
+        <span>x<i>1</i></span>
+      </div>
+    </div>
+
+  </div>
+  <!-- 商品购物信息结束 -->
+
+<!-- 主体部分结束 -->
+
+<!-- 支付部分 固定定位 位置不会改变固定在屏幕上 -->
+<div class="pay">
+  <div class="left">
+
+  </div>
+  <div class="right">
+    <a onclick="pay()">
+      去支付
+    </a>
+  </div>
+</div>
+</div>
+<!-- 支付部分结束 -->
+</body>
+</html>

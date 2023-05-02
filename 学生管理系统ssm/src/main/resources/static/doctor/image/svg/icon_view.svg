@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="30px" height="30px" viewBox="0 0 30 30" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>icon_view</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="icon_view" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="观看">
+            <rect id="Rectangle-15" x="0" y="0" width="30" height="30"></rect>
+            <g id="Group-17" transform="translate(2.000000, 7.000000)" stroke="#646464" stroke-width="2">
+                <path d="M13.1219303,0.00115047013 C17.8698174,0.0655289542 22.1625073,2.8312368 26,8.29827401 C22.1399701,13.4967256 17.8217771,16.0635691 13.0454211,15.9988046 C8.26906515,15.9340401 3.92059144,13.2389986 0,7.91368022 C4.00006645,2.5742819 8.37404323,-0.0632280139 13.1219303,0.00115047013 Z" id="Rectangle-13"></path>
+                <circle id="Oval-14" cx="13" cy="8" r="3"></circle>
+            </g>
+        </g>
+    </g>
+</svg>

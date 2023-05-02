@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="28px" viewBox="0 0 20 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>icon_inter_arrow</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="发布-copy" transform="translate(-702.000000, -262.000000)">
+            <rect id="Rectangle-6" fill="#F4F3F7" x="0" y="0" width="750" height="1334"></rect>
+            <g id="我要置顶" transform="translate(0.000000, 129.000000)">
+                <polygon id="Rectangle-2-Copy-3" fill="#FFFFFF" points="0 0 750 0 750 296 0 296"></polygon>
+                <g id="Group-5" transform="translate(702.000000, 133.000000)">
+                    <g id="icon_inter_arrow">
+                        <rect id="Rectangle-5" x="0" y="0" width="20" height="28"></rect>
+                        <polyline id="Path-2" stroke="#979797" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" points="3.18004367 2 17 14 3 26"></polyline>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

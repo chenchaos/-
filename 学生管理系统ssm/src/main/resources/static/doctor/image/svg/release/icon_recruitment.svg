@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="90px" height="90px" viewBox="0 0 90 90" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>招聘求职</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="50%" y1="100%" x2="50%" y2="0%" id="linearGradient-1">
+            <stop stop-color="#4667FB" offset="0%"></stop>
+            <stop stop-color="#634FFD" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="62.1661508%" y1="-7.38330452%" x2="62.1661484%" y2="36.6499549%" id="linearGradient-2">
+            <stop stop-color="#E1E1E1" stop-opacity="0.775730299" offset="0%"></stop>
+            <stop stop-color="#FFFFFF" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="发布-copy-4" transform="translate(-330.000000, -158.000000)">
+            <g id="1" transform="translate(19.000000, 158.000000)">
+                <g id="招聘求职" transform="translate(311.000000, 0.000000)">
+                    <g>
+                        <circle id="Oval" fill="url(#linearGradient-1)" cx="45" cy="45" r="45"></circle>
+                        <g id="姓名" transform="translate(25.000000, 23.000000)">
+                            <rect id="Rectangle-4" fill="#FFFFFF" x="23" y="32" width="17" height="3" rx="1.5"></rect>
+                            <rect id="Rectangle-4-Copy" fill="#FFFFFF" x="23" y="42" width="17" height="3" rx="1.5"></rect>
+                            <path d="M27,27.8810766 C24.1424799,25.4593848 20.4512845,24 16.4209646,24 C7.35191629,24 0,31.3894857 0,40.5048782 C0,41.704089 0.127245034,42.8734282 0.368904774,44" id="Oval-3-Copy" stroke="url(#linearGradient-2)" stroke-width="4" stroke-linecap="round"></path>
+                            <circle id="Oval-3" fill="#FFFFFF" cx="17" cy="12" r="12"></circle>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

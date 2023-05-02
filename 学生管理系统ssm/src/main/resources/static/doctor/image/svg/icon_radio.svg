@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="30px" height="60px" viewBox="0 0 30 60" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>icon_radio</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="37.6094276%" y1="0%" x2="68.0866062%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#FD8265" offset="0%"></stop>
+            <stop stop-color="#FF382F" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="我的-资料" transform="translate(-554.000000, -551.000000)">
+            <g id="我要置顶" transform="translate(0.000000, 216.000000)">
+                <g id="gender" transform="translate(30.000000, 332.000000)">
+                    <g id="icon_radio" transform="translate(524.000000, 3.000000)">
+                        <rect id="Rectangle-7" x="0" y="0" width="30" height="60"></rect>
+                        <circle id="Oval-14" stroke="#FF3C32" stroke-width="2" cx="15" cy="15" r="14"></circle>
+                        <g id="1" transform="translate(0.000000, 30.000000)">
+                            <circle id="Oval-14-Copy" fill="url(#linearGradient-1)" cx="15" cy="15" r="15"></circle>
+                            <polyline id="Path-2" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" points="8 13.9850029 13.6279006 19.0004617 22.9003669 10"></polyline>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

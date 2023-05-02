@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="90px" height="90px" viewBox="0 0 90 90" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>教育培训</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#51E8D6" offset="0%"></stop>
+            <stop stop-color="#8EDD3C" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="13.140625%" x2="50%" y2="59.2929687%" id="linearGradient-2">
+            <stop stop-color="#FFFFFF" stop-opacity="0.813660553" offset="0%"></stop>
+            <stop stop-color="#FFFFFF" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="发布-copy-4" transform="translate(-330.000000, -333.000000)">
+            <g id="2" transform="translate(19.000000, 333.000000)">
+                <g id="教育培训" transform="translate(311.000000, 0.000000)">
+                    <g>
+                        <circle id="Oval" fill="url(#linearGradient-1)" cx="45" cy="45" r="45"></circle>
+                        <g id="教育" transform="translate(17.000000, 24.000000)" fill-rule="nonzero">
+                            <path d="M24.0910973,22.4374317 L12.6192222,18.0001335 L7,18 L7,30.9105377 C7,33.0350708 8.57419575,35.446189 10.5150215,36.2927994 L24.4056838,42.3625985 C26.3465096,43.2092089 29.4973603,43.2128788 31.4405788,42.3710726 L45.4825193,36.2842586 C47.4245414,35.4425191 49,33.0349373 49,30.9104042 L49,18 L42.798796,18 L32.6324585,22.3024464 C31.410403,22.8211021 29.8156026,23.1065529 28.1482206,23.1065529 C27.0882772,23.106753 25.5249155,22.990184 24.0910973,22.4374317 Z" id="Shape" fill="url(#linearGradient-2)"></path>
+                            <path d="M25.5659523,25.0659628 C27.2994938,25.8478105 30.0913656,25.7967268 31.8026313,24.9501867 L56.206916,14.0993742 L56.206916,30.3381178 L55.4510574,36 L57,36 L56.206916,30.3381178 L56.206916,12.8096982 C57.16658,12.0004964 56.9330347,10.9909261 55.4510574,10.3696468 L31.8716161,0.529840725 C30.1221551,-0.202154187 27.2952369,-0.171107318 25.5563306,0.5945331 L1.30704301,11.2933253 C-0.431804981,12.0601967 -0.436003548,13.3175265 1.29642997,14.0993742 L25.5659523,25.0659628 Z" id="Shape" stroke="#FFFFFF" stroke-width="5"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

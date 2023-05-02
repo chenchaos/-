@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+        <title>信蜂</title>
+        <link rel="stylesheet" type="text/css" href="css/public.css" />
+        <link rel="stylesheet" type="text/css" href="css/mine.css" />
+        <script type="text/javascript" src="js/fontSize.js"></script>
+    </head>
+    <body>
+    	<div class="whole">
+    		<div class="common-animate animated flipInX">
+	    		<div class="mine-header">
+	    			<div class="common-header">
+						<a class="back-btn" href="javascript:history.back(-1)">
+							<img src="image/svg/icon_back_white.svg">
+						</a>
+		                <div class="header-text">我的</div>
+		            </div>
+	    		</div>
+	    		<div class="mine-txt">
+	    			<!--信息模块-->
+	    			<div class="txt-content">
+	    				<div class="mine-header-img">
+	    					<img src="image/jpg/head_img.jpg">
+	    				</div>
+	    				<div class="header-title">
+	    					<h5>
+	    						<a href="javascript:void(0)"><h5 class="phone"></h5></a>
+	    						<a class="edit-info" href="my_info.html"><img src="image/svg/icon_edit.svg"></a>
+	    					</h5>
+<!--	    					<span>编号：<small>1876530</small></span>-->
+	    					<a href="javascript:void(0)" class="no-login">注册/登录</a>
+	    				</div>
+	    				<div class="mine-btns">
+		    				<a href="my_wallet.html">
+		    					<div class="common-img">
+		    						<img src="image/svg/icon_wallet.svg" />
+		    					</div>
+		    					<div class="common-title">我的钱包</div>
+		    				</a>
+		    				<span>|</span>
+		    				<a href="my_order.html">
+		    					<div class="common-img">
+		    						<img src="image/svg/icon_reply.svg" />
+		    					</div>
+		    					<div class="common-title">我的问诊</div>
+		    				</a>
+		    			</div>
+	    			</div>
+	    		</div>
+	    		<!--列表-->
+    			<div class="mine-list">
+    				<a href="my_collect.html">
+    					<div class="contxt-left">
+    						<span>
+    							<img src="image/svg/icon_Collection.svg">
+    						</span>
+    						<small>收藏</small>
+    					</div>
+    					<div class="conext-right">
+    						<img src="image/svg/icon_return_arrw.svg">
+    					</div>
+    				</a>
+    				<a href="javascript:void(0)">
+    					<div class="contxt-left">
+    						<span>
+    							<img src="image/svg/icon_share_mine.svg">
+    						</span>
+    						<small>分享</small>
+    					</div>
+    					<div class="conext-right">
+    						<img src="image/svg/icon_return_arrw.svg">
+    					</div>
+    				</a>
+    				<a href="my_comment.html">
+    					<div class="contxt-left">
+    						<span>
+    							<img src="image/svg/icon_news.svg">
+    						</span>
+    						<small>评论/回复</small>
+    					</div>
+    					<div class="conext-right">
+    						<img src="image/svg/icon_return_arrw.svg">
+    					</div>
+    				</a>
+    				<a href="message.html">
+    					<div class="contxt-left">
+    						<span>
+    							<img src="image/svg/icon_message_tips.svg">
+    						</span>
+    						<small>消息</small>
+    					</div>
+    					<div class="conext-right">
+    						<img src="image/svg/icon_return_arrw.svg">
+    					</div>
+    				</a>
+                    <a href="feedback.html">
+                        <div class="contxt-left">
+                            <span>
+                                <img src="image/svg/icon_feedback.svg">
+                            </span>
+                            <small>用户反馈</small>
+                        </div>
+                        <div class="conext-right">
+                            <img src="image/svg/icon_return_arrw.svg">
+                        </div>
+                    </a>
+    			</div>
+	        </div>
+	        <!--footer-->
+            <div class="footer" style="bottom:0">
+                <a href="index.html">
+                    <span><img src="image/svg/icon_home.svg"></span>
+                    <small>首页</small>
+                </a>
+                <a href="release_baby.html" id="releaseBtn">
+                    <span><img src="image/svg/icon_release.svg"></span>
+                    <small>发布</small>
+                </a>
+                <a href="javascript:void(0)" class="state-active">
+                    <span><img src="image/svg/icon_my.svg"></span>
+                    <small>我的</small>
+                </a>
+            </div>
+    	</div>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    	<script type="text/javascript">
+    		if(sessionStorage.getItem("user_phone")){
+				$(".phone").html(sessionStorage.getItem("user_phone"))
+			}
+    	</script>
+    </body>
+</html>

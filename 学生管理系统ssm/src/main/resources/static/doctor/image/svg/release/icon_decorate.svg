@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="90px" height="90px" viewBox="0 0 90 90" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>装修建材</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#FD8C65" offset="0%"></stop>
+            <stop stop-color="#FD6A63" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="114.857397%" id="linearGradient-2">
+            <stop stop-color="#FFFFFF" offset="0%"></stop>
+            <stop stop-color="#FFFFFF" stop-opacity="0.759709013" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="发布-copy-4" transform="translate(-180.000000, -333.000000)">
+            <g id="2" transform="translate(19.000000, 333.000000)">
+                <g id="装修建材" transform="translate(161.000000, 0.000000)">
+                    <g>
+                        <circle id="Oval" fill="url(#linearGradient-1)" cx="45" cy="45" r="45"></circle>
+                        <g id="Group-6" transform="translate(18.000000, 22.000000)">
+                            <path d="M49.7883008,20.7434104 L50.0891365,20.3617739 C52.5710306,17.6139913 52.3454039,13.2633354 49.8635097,10.3628982 L49.1866295,9.67595253 L40.913649,2.11955028 C37.7548747,-0.780886946 33.0167131,-0.70455965 30.3844011,2.34853217 L14.9218902,20.3617739 C38.166164,20.6161982 49.7883008,20.7434104 49.7883008,20.7434104 Z" id="Path" fill="url(#linearGradient-2)"></path>
+                            <path d="M49.7883008,20.7434104 L7.22005571,19.9801374 C3.23398329,19.9801374 0,23.491193 0,27.8418488 L0,39.1382886 C0,43.4889444 3.23398329,47 7.22005571,47 L46.7799443,47 C50.4651811,47 53.4735376,44.0232355 53.9247911,40.1305434 C53.9247911,39.8252342 54,39.519925 54,39.1382886 L54,27.8418488 C54,24.7124297 52.270195,21.9646471 49.7883008,20.7434104 Z M50,32.7757848 L50,39.0269058 C50,39.3318386 49.9247492,39.7130045 49.8494983,40.0179372 C49.4732441,41.161435 48.4949833,42 47.2909699,42 L7.7090301,42 C6.20401338,42 5,40.7040359 5,39.103139 L5,27.896861 C5,26.2959641 6.20401338,25 7.7090301,25 L47.2157191,25 C48.7207358,25 49.9247492,26.2959641 49.9247492,27.896861 L49.9247492,32.7757848 L50,32.7757848 Z" id="Shape" fill="#FFFFFF" fill-rule="nonzero"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

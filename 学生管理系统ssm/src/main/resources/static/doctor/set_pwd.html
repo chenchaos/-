@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+        <title>信蜂</title>
+        <link rel="stylesheet" type="text/css" href="css/public.css" />
+        <link rel="stylesheet" type="text/css" href="css/login.css" />
+        <script type="text/javascript" src="js/fontSize.js"></script>
+    </head>
+    <body>
+    	<div class="whole">
+    		<div class="login-bg">
+				<img src="image/svg/login_bg.svg" />
+    		</div>
+    		<div class="login-form">
+				<h5 class="login-title">设置密码</h5>
+				<form id="login_input">
+					<div class="input-group">
+						<span class="icons">
+							<img src="image/svg/icon_phone.svg" />
+						</span>
+						<input type="password" name="password" onkeyUp="textLenCheck(this);" maxlength="11" placeholder="请输入密码" />
+						<span class="remove-btn" id="removeBtn">
+							<img src="image/svg/icon_close.svg" />
+						</span>
+					</div>
+					<div class="input-group">
+						<span class="icons">
+							<img src="image/svg/icon_psd.svg" />
+						</span>
+						<input type="password" name="password" onkeyUp="textLenCheck(this);" placeholder="请再次输入密码" />
+                        <span class="remove-btn" id="removeBtn">
+                            <img src="image/svg/icon_close.svg" />
+                        </span>
+					</div>
+				</form>
+				<button type="button" name="loginBtn" id="loginBtn" class="login-btn">去登录</button>
+    		</div>
+    		<div class="loading-modal" id="loading">
+    			<div class="modal-content">
+		    		<div class="loading state-loading">
+		    			<img src="image/jpg/loading.png" />
+		    		</div>
+	    		</div>
+    		</div>
+
+    	</div>
+    	<script type="text/javascript">
+    		function textLenCheck(thisArea){
+                if (thisArea.value.length > 0){
+                    var ele = thisArea.nextElementSibling;
+                    ele.className="remove-btn state-active";
+                }else{
+                    ele.className="remove-btn";
+                }
+            }
+
+            var removeBtn = document.getElementsByClassName('remove-btn');
+            for(var i=0;i<removeBtn.length;i++){
+                removeBtn[i].onclick= function(){
+                    var ele = this.previousElementSibling;
+                    this.className="remove-btn";
+                    ele.value='';
+                }
+            }
+
+            var loginBtn = document.getElementById('loginBtn');
+            loginBtn.onclick = function(){
+                document.getElementById('loading').className="loading-modal state-show";
+                var t=setTimeout(function(){
+                    window.location.href="login.html";
+                },1000)
+            }
+        	
+    	</script>
+    </body>
+</html>

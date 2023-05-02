@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qy151wd.dao.UserDao">
+    <!--此处起了别名User-->
+    <select id="getNameAndPass" resultType="User" parameterType="String">
+        <!--uername=#{name}此处name本应该为uername但dao包下的多参输入，名字对应改变了-->
+        select * from tb_user where uername=#{name} and password=#{pass}
+    </select>
+</mapper>

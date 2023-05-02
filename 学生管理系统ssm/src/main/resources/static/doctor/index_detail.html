@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+        <title>信蜂</title>
+        <link rel="stylesheet" type="text/css" href="css/public.css" />
+        <link rel="stylesheet" type="text/css" href="css/index_detail.css" />
+        <script type="text/javascript" src="js/fontSize.js"></script>
+        <script type="text/javascript" src="js/public.js"></script>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    </head>
+    <body>
+	<script type="text/javascript" >
+
+		$(function (){
+			var idz =getUrlParams('id')
+			var param ={"id":idz}
+			$.post("findTieBaById?",param,function(data,status) {
+				$(".username").html(data.username)
+				$(".adress").html(data.adress)
+				$(".img").attr('src',data.img)
+				$(".img2").attr('src',data.img2)
+				$(".img3").attr('src',data.img3)
+				$(".content").html(data.content)
+				$(".createTime").html(data.createTime)
+
+
+			})
+
+			//点击评论
+			$(".comments").click( function(){
+				debugger
+				$("#commentsMask").attr('class',"comments-mask");
+				$("#maskContent").attr('class',"comments-mask-content animated slideInUp");
+			})
+
+			//关闭评论
+			$("#commentsMask").click( function(){
+				debugger
+				$("#commentsMask").attr('class',"comments-mask hidden-class");
+				$("#maskContent").attr('class',"comments-mask-content");
+			})
+
+			var openEnvelopes = document.getElementById('openEnvelopes');
+			//开按钮点击事件
+			$("#noOpenBtn").click( function(){
+				var timed = setTimeout(function(){
+					$("#openedBtn").attr('class',"opened animated fadeIn");
+					$("#openedBtn").attr('class',"no-open hidden-class");
+				},2000);
+			})
+
+			//关闭事件
+			$("#openClose").click( function(){
+					$("#openEnvelopes").attr('class',"open-envelopes hidden-class");
+			})
+
+
+
+		})
+	</script>
+    	<div class="whole">
+
+    		<!--header-->
+			<div class="common-header">
+				<a class="back-btn" href="javascript:history.back(-1)">
+					<img src="image/svg/icon_back.svg" />
+				</a>
+                <div class="header-text">详情</div>
+            </div>
+            
+			<div class="detail">
+				
+				<!--content-->
+				<div class="content-header">
+                    <div class="header-left">
+                        <a href="javascript:void(0)" class="header-img">
+                            <img src="image/jpg/head_img.jpg" />
+                        </a>
+                        <div class="header-txt">
+                            <a href="javascript:void(0)" class="username">追剧小毛驴</a>
+                            <div class="coordinate">
+                                <span><img src="image/svg/icon_coordinates.svg" /></span>
+                                <a href="javascript:void(0)" class="adress">北京市通州区物资学院路</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="header-right-top">
+                        <a href="javascript:void(0)" class="call createTime" >今天11:20发布</a>
+                    </div>
+                </div>
+				
+				<!--详情内容-->
+                <div class="detail-content">
+					<h5>详情内容</h5>
+					<span>
+	                    <i class="content">#商业经营 商铺/门面#</i>环球金融城办公写字楼转让，230平，精装修，办公家具齐全，低价转让，机会不容错过，有意联系我，李经理。
+	                    <img class="img" src="" />
+	                    <img class="img2"src="" />
+	                    <img class="img3"src="" />
+	                </span>
+                </div>
+
+               <!-- &lt;!&ndash;为你推荐&ndash;&gt;
+                <div class="detail-recommend">
+                	<h5>为你推荐</h5>
+					<div class="recommend-header">
+	                    <div class="header-left">
+	                        <a href="javascript:void(0)" class="header-img">
+	                            <img src="image/jpg/head_img.jpg" />
+	                        </a>
+	                        <div class="header-txt">
+	                            <a href="javascript:void(0)">追剧小毛驴</a>
+	                            <div class="coordinate">
+	                                <span><img src="image/svg/icon_coordinates.svg" /></span>
+	                                <a href="javascript:void(0)">北京市通州区物资学院路</a>
+	                            </div>
+	                        </div>
+	                    </div>
+	                    <div class="header-right-top">
+	                        <a href="javascript:void(0)" class="call">今天11:20发布</a>
+	                    </div>
+	                </div>
+	                <div class="detail-content">
+						<span>
+		                    <i>#商业经营 商铺/门面#</i>环球金融城办公写字楼转让，230平，精装修，办公家具齐全，低价转让，机会不容错过，有意联系我，李经理。
+		                </span>
+	                </div>
+                </div>-->
+
+                <!--全部评论-->
+                <div class="detail-comments">
+					<h5>全部评论 (2)</h5>
+					<ul>
+						<li>
+							<div class="comments-header">
+								<div class="header-left">
+			                        <a href="javascript:void(0)" class="header-img">
+			                            <img src="image/jpg/head_img_user.jpg" />
+			                        </a>
+			                        <div class="header-txt">
+			                            <a href="javascript:void(0)">飞起的小披萨</a>
+			                            <div class="coordinate">
+			                                <a href="javascript:void(0)">今天12:40</a>
+			                            </div>
+			                        </div>
+			                    </div>
+							</div>
+							<div class="comments-list">
+								<div class="comments-user">我只是一个评论，看着你的广告不错，我领取了一个大红包，现在给你一点惊喜。</div>
+								<div class="just-icon">
+									<span>
+										<img src="image/svg/icon_comments.svg" />
+									</span>
+								</div>
+								<div class="reply">
+									<span>追剧小毛驴</span> 回复 <span>飞起的小披萨</span> : 麻烦联系我，给我打电话，详情咱们细聊可以吗，真心想要这个东西。
+								</div>
+
+							</div>
+						</li>
+					</ul>
+                </div>
+
+			</div>
+    		<!-- <div class="loading animated infinite rotateIn delay-5s">
+    			<img src="./image/jpg/loading.png" />
+    		</div> -->
+    		<!--红包领取-->
+    		<!--<div class="open-envelopes animated bounceIn" id="openEnvelopes">
+				<div class="envelopes-container">
+					<div class="no-open animated" id="noOpenBtn">
+						<img src="image/svg/icon_open.svg" />
+					</div>
+					<div class="opened animated fadeOut hidden-class" id="openedBtn">
+						<h5>1.68<small>元</small></h5>
+						<div class="head-image">
+							<span>
+								<img src="image/jpg/head_img.jpg" />
+							</span>
+							<small>来自 追剧的小毛驴</small>
+						</div>
+						<div class="open-time">领取时间:2018-11-12</div>
+						<div class="open-close" id="openClose">
+							<img src="image/svg/icon_closed.svg" />
+						</div>
+					</div>
+				</div>
+    		</div>-->
+
+    		<!--评论弹窗-->
+    		<div class="comments-mask hidden-class" id="commentsMask">
+				<div class="comments-mask-content" id="maskContent">
+					<h5>评论</h5>
+					<div class="text-area">
+						<textarea placeholder="评论 大胆说出你的想法" id="comments-txt"></textarea>
+					</div>
+					<div class="comments-btn">
+						<a href="javascript:void(0)">
+							<span>
+								<img src="image/svg/icon_coordinates.svg">
+							</span>
+							<small>请遵循用户协议</small>
+						</a>
+						<button type="button" class="push-comments">发表</button>
+					</div>
+					<!-- <div class="complete">
+						<span class="expression"></span>
+						<button type="button" class="complete-btn">完成</button>
+					</div> -->
+				</div>
+    		</div>
+
+    		<!--detail footer-->
+    		<div class="detail-footer">
+				<!--<div class="footer-left">
+					<a href="javascript:void(0)">
+						<span><img src="image/svg/icon_share.svg" /></span>
+						<small>分享</small>
+					</a>
+					<a href="javascript:void(0)" id="comments">
+						<span><img src="image/svg/icon_comments.svg" /></span>
+						<small>留言</small>
+					</a>
+					<a href="javascript:void(0)">
+						<span><img src="image/svg/icon_envelope.svg" /></span>
+						<small>168</small>
+					</a>
+				</div>-->
+				<div class="footer-right comments" style="width: 100%">
+					<a   >评论</a>
+				</div>
+    		</div>
+    	</div>
+        <script type="text/javascript">
+			$(function (){
+				var openEnvelopes = document.getElementById('openEnvelopes');
+				//开按钮点击事件
+				var noOpenBtn = document.getElementById('noOpenBtn');
+				var openedBtn = document.getElementById('openedBtn');
+				noOpenBtn.onclick = function(){
+					this.className="no-open animated infinite flip delay-5s";
+					var timed = setTimeout(function(){
+						openedBtn.className="opened animated fadeIn";
+						noOpenBtn.className="no-open hidden-class";
+					},2000);
+				}
+
+				//关闭事件
+				var openClose = document.getElementById('openClose');
+				openClose.onclick = function(){
+					openEnvelopes.className="open-envelopes hidden-class";
+				}
+				//点击评论按钮
+
+
+
+			})
+
+        	// commentsMask.onclick=function(e){
+        	// 	e.stopPropagation();
+        	// 	commentsMask.className="comments-mask hidden-class";
+        	// }
+        </script>
+
+    </body>
+</html>

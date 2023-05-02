@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="532px" height="662px" viewBox="0 0 532 662" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>envelpe_bg</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <filter x="-2.0%" y="-1.2%" width="104.0%" height="103.2%" filterUnits="objectBoundingBox" id="filter-1">
+            <feOffset dx="0" dy="3" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="3" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.240206069 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+        <linearGradient x1="50%" y1="2.99629697%" x2="50%" y2="100%" id="linearGradient-2">
+            <stop stop-color="#FB4F4F" offset="0%"></stop>
+            <stop stop-color="#E62530" offset="100%"></stop>
+        </linearGradient>
+        <path d="M5,0 L515,0 C517.761424,-5.07265313e-16 520,2.23857625 520,5 L520,650 L0,650 L0,5 C-3.38176876e-16,2.23857625 2.23857625,5.07265313e-16 5,0 Z" id="path-3"></path>
+        <ellipse id="path-5" cx="260.271605" cy="7.07407407" rx="338.271605" ry="274.074074"></ellipse>
+        <filter x="-6.6%" y="-7.2%" width="113.2%" height="116.2%" filterUnits="objectBoundingBox" id="filter-6">
+            <feOffset dx="0" dy="5" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="14" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.217306386 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+        <linearGradient x1="55.5781126%" y1="13.9405848%" x2="55.5781126%" y2="65.1307397%" id="linearGradient-7">
+            <stop stop-color="#B20A1F" offset="0%"></stop>
+            <stop stop-color="#E0222B" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="红包" transform="translate(-109.000000, -339.000000)">
+            <g id="envelpe_bg" transform="translate(115.000000, 342.000000)">
+                <g id="红包">
+                    <g filter="url(#filter-1)">
+                        <g id="Group-2">
+                            <mask id="mask-4" fill="white">
+                                <use xlink:href="#path-3"></use>
+                            </mask>
+                            <use id="Rectangle-2" fill="url(#linearGradient-2)" xlink:href="#path-3"></use>
+                            <g id="Oval-8" mask="url(#mask-4)">
+                                <use fill="black" fill-opacity="1" filter="url(#filter-6)" xlink:href="#path-5"></use>
+                                <use fill="#EE443E" fill-rule="evenodd" xlink:href="#path-5"></use>
+                            </g>
+                            <path d="M0,639.533203 C173.333333,606.318627 346.666667,606.318627 520,639.533203 C520,643.138126 520,646.627058 520,650 L0,650 L0,639.533203 Z" id="Path-4" fill="url(#linearGradient-7)" mask="url(#mask-4)"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

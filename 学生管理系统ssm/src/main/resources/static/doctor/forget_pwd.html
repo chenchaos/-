@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+        <title>信蜂</title>
+        <link rel="stylesheet" type="text/css" href="css/public.css" />
+        <link rel="stylesheet" type="text/css" href="css/login.css" />
+        <script type="text/javascript" src="js/fontSize.js"></script>
+    </head>
+    <body>
+    	<div class="whole">
+    		<div class="login-bg">
+				<img src="image/svg/login_bg.svg" />
+    		</div>
+    		<div class="login-form">
+				<h5 class="login-title">密码找回</h5>
+				<form id="login_input">
+					<div class="input-group">
+						<span class="icons">
+							<img src="image/svg/icon_phone.svg" />
+						</span>
+						<input type="tel" name="telphone" onkeyUp="textLenCheck(this);" maxlength="11" placeholder="请输入您的帐号" />
+						<span class="remove-btn" id="removeBtn">
+							<img src="image/svg/icon_close.svg" />
+						</span>
+					</div>
+					<div class="input-group">
+						<span class="icons">
+							<img src="image/svg/icon_psd.svg" />
+						</span>
+						<input type="tel" name="code" onkeyUp="textLenCheck(this);" placeholder="请输入验证码" />
+						<input type="button" class="get-code" id="getCode" disabled="disabled" value="获取验证码" />
+					</div>
+				</form>
+				<button type="button" name="loginBtn" id="loginBtn" class="login-btn">下一步</button>
+    		</div>
+    		<div class="loading-modal" id="loading">
+    			<div class="modal-content">
+		    		<div class="loading state-loading">
+		    			<img src="image/jpg/loading.png" />
+		    		</div>
+	    		</div>
+    		</div>
+
+    	</div>
+    	<script type="text/javascript">
+    		var getCode = document.getElementById('getCode');
+    		function textLenCheck(thisArea){
+    			var ele = thisArea.nextElementSibling;
+	            if (thisArea.value.length > 0){
+	                ele.className="remove-btn state-active";
+	                getCode.disabled="";
+	            }else{
+	            	ele.className="remove-btn";
+	            	getCode.disabled="disabled";
+	            }
+        	}
+
+        	getCode.onclick = function(){
+        		this.disabled="disabled";
+        		var seconds = 60;
+        		var timer=setInterval(function(){
+        			seconds = seconds-1;
+        			getCode.value = ""+seconds+"s后重新获取";
+        			if(seconds == 0){
+        				clearTimeout(timer);
+        				getCode.disabled="";
+        				getCode.value = "重新获取";
+        			}
+        		},1000)
+        	}
+
+        	var removeBtn = document.getElementById('removeBtn');
+    		removeBtn.onclick= function(){
+        		var ele = this.previousElementSibling;
+        		this.className="remove-btn";
+        		ele.value='';
+        		getCode.disabled="disabled";
+        	}
+
+        	var loginBtn = document.getElementById('loginBtn');
+        	loginBtn.onclick = function(){
+        		document.getElementById('loading').className="loading-modal state-show";
+                var t=setTimeout(function(){
+                    window.location.href="set-pwd.html";
+                },1000)
+        	}
+        	
+    	</script>
+    </body>
+</html>

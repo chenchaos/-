@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+        <title>信蜂</title>
+        <link rel="stylesheet" type="text/css" href="css/public.css" />
+        <link rel="stylesheet" type="text/css" href="css/login.css" />
+        <script type="text/javascript" src="js/fontSize.js"></script>
+    </head>
+    <body>
+    	<div class="whole">
+    		<div class="login-bg">
+				<img src="image/svg/e5bff84461aec794ac12eb67e56e3d41.jpeg" />
+    		</div>
+    		<div class="login-form">
+				<h5 class="login-title">旎旎医院登陆/注册</h5>
+				<form id="login_input">
+					<div class="input-group">
+						<span class="icons">
+							<img src="image/svg/icon_phone.svg" />
+						</span>
+						<input type="tel" class="phone" onkeyUp="textLenCheck(this);" maxlength="11" placeholder="请输入您的帐号" />
+						<span class="remove-btn">
+							<img src="image/svg/icon_close.svg" />
+						</span>
+					</div>
+					<div class="input-group">
+						<span class="icons">
+							<img src="image/svg/icon_psd.svg" />
+						</span>
+						<input type="password" class="password" onkeyUp="textLenCheck(this);" placeholder="请输入密码" />
+						<span class="remove-btn">
+							<img src="image/svg/icon_close.svg" />
+						</span>
+					</div>
+				</form>
+				<button type="button" name="loginBtn" id="loginBtn" class="login-btn login">登录</button>
+				<button type="button" name="register" id="register" class="login-btn register">注册</button>
+				<!--<div class="other-btn">
+					<a href="register.html">还没有帐号？去注册</a>
+					<a href="forget-pwd.html">忘记密码</a>
+				</div>-->
+    		</div>
+    		<div class="loading-modal" id="loading">
+    			<div class="modal-content">
+		    		<div class="loading state-loading">
+		    			<img src="image/jpg/loading.png" />
+		    		</div>
+	    		</div>
+    		</div>
+    	</div>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    	<script type="text/javascript">
+			$(function (){
+				var ccsUrl = "http://localhost:8088/";
+				$(".login").click(function (){
+					var passwod =$(".password").val();
+					var phone =$(".phone").val();
+					var param ={"phone":phone,"pass_work":passwod}
+					$.ajax({
+						type: "POST",
+						contentType: "application/json; charset=utf-8",
+						url: "/chnl/user/login",
+						data: JSON.stringify(param),
+						cache: false,
+						success:  function(data,status){
+							alert(data.msg)
+							sessionStorage.setItem("user_phone",data.user.phone)
+							sessionStorage.setItem("user_id",data.user.id)
+							window.location.href=ccsUrl+'/doctor/index.html'
+						},
+						error: function() {
+							console.log('失败');
+						}
+					});
+				})
+
+
+				$(".register").click(function (){
+					var passwod =$(".password").val();
+					var phone =$(".phone").val();
+					var param ={"phone":phone,"pass_work":passwod}
+					$.ajax({
+						type: "POST",
+						contentType: "application/json; charset=utf-8",
+						url: "/chnl/user/create",
+						data: JSON.stringify(param),
+						cache: false,
+						success:  function(data,status){
+							alert(data.msg)
+
+						},
+						error: function() {
+							console.log('失败');
+						}
+					});
+				})
+			})
+
+    		function textLenCheck(thisArea){
+	            if (thisArea.value.length > 0){
+	                var ele = thisArea.nextElementSibling;
+	                ele.className="remove-btn state-active";
+	            }else{
+	            	ele.className="remove-btn";
+	            }
+        	}
+
+        	var removeBtn = document.getElementsByClassName('remove-btn');
+        	for(var i=0;i<removeBtn.length;i++){
+        		removeBtn[i].onclick= function(){
+	        		var ele = this.previousElementSibling;
+	        		this.className="remove-btn";
+	        		ele.value='';
+	        	}
+        	}
+
+        	var loginBtn = document.getElementById('loginBtn');
+        	loginBtn.onclick = function(){
+        		document.getElementById('loading').className="loading-modal state-show";
+        	}
+        	
+    	</script>
+
+		
+    </body>
+</html>
