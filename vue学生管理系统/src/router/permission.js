@@ -25,11 +25,10 @@ router.beforeEach(async (to,from,next) => {
    if(hasToken){
         // if(true){
         if(to.path === '/login'){
-            
+
             // 已登录重定向到首页
             next({path: '/'})
         }else{
-            
             //若用户角色已附加则说明动态路由已经添加
             const hasRoles = store.getters.roles && store.getters.roles.length > 0
 
@@ -40,13 +39,13 @@ router.beforeEach(async (to,from,next) => {
                 try {
                     //先请求获取用户角色
                     const { roles } = await store.dispatch('user/getInfo')
-                
+
                     // 根据当前用户角色动态生成路由
                     const accessRoutes = await store.dispatch('permission/generateRoutes', roles)
-                    
+
                     // 添加这些路由至路由器
                     router.addRoutes(accessRoutes)
-                    
+
                     // 继续路由切换,确保addRoutes完成
                     next({...to,replace: true})
                 } catch(error){
@@ -56,7 +55,7 @@ router.beforeEach(async (to,from,next) => {
                     next(`/login?redirect=${to.path}`)
                 }
             }
-           
+
         }
     }else{
         // 用户无令牌

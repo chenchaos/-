@@ -45,7 +45,7 @@ export const constRouter = [
 
 // 动态路由 communication
 export const asyncRoutes = [
- 
+
   {
     path: '/goods',
     component: Layout,
@@ -65,7 +65,7 @@ export const asyncRoutes = [
           icon: 'el-icon-tickets',
           hidden: true,
           roles: ['admin','jerry'],
-          
+
         }
       },
       {
@@ -80,7 +80,7 @@ export const asyncRoutes = [
           roles: ['admin','jerry']
         }
       },
-      
+
       {
         path: 'sort',
         component: () => import('@/views/goods/SortNew.vue'),
@@ -147,7 +147,7 @@ export const asyncRoutes = [
           icon: 'el-icon-tickets',
           hidden: true,
           roles: ['admin','jerry'],
-          
+
         }
       },
       {
@@ -162,9 +162,55 @@ export const asyncRoutes = [
           roles: ['admin','jerry']
         }
       },
-    
+
     ]
   },
+
+  {
+    path: '/teacherManage',
+    component: Layout,
+    meta:{
+      title: "教师管理",
+      icon: 'el-icon-s-platform',
+      hidden: false,
+    },
+    children: [
+      // {
+      //   path: 'offindex',
+      //   component: () => import('@/views/doctorManage/OffIndex.vue'),
+      //   name: 'offindex',
+      //   meta: {
+      //     title: "用户订单管理",
+      //     icon: 'el-icon-tickets',
+      //     hidden: false,
+      //     roles: ['admin','jerry']
+      //   }
+      // },
+      {
+        path: 'student',
+        component: () => import('@/views/teacherManage/student.vue'),
+        name: 'student',
+        meta: {
+          title: "学生管理",
+          icon: 'el-icon-tickets',
+          hidden: false,
+          roles: ['admin', 'jerry']
+        }
+      },
+      {
+        path: 'course',
+        component: () => import('@/views/teacherManage/course.vue'),
+        name: 'course',
+        meta: {
+          title: "课程管理",
+          icon: 'el-icon-tickets',
+          hidden: false,
+          roles: ['admin','jerry']
+        }
+      }
+    ]
+  },
+
   {
     path: '/doctor',
     component: Layout,

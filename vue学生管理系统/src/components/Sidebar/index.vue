@@ -32,13 +32,13 @@ export default {
   components: { SidebarItem },
   data(){
     return {
-      permission_routes:[ 
+      permission_routes:[
   ]
     }
   },
   computed: {
     // ...mapGetters(["permission_routes"]),
-    
+
     activeMenu() {
       const route = this.$route;
       const { meta, path } = route;
@@ -53,21 +53,20 @@ export default {
         menuText: "#ffffff",  // "#bfcbd9"
         menuActiveText: "#ffffff",
         menuBg:  "#001529"
-       
+
       };
     }
   },
   mounted() {
     console.log(JSON.stringify(this.permission_routes) )
-    debugger
+
     if(sessionStorage.getItem('role_id')==2){
     //教师
       this.permission_routes =[ {
-    path: '/doctor',
+    path: '/teacherManage',
     component: Layout,
-    redirect: '/doctor/keycode',
     meta:{
-      title: "病人管理",
+      title: "教师管理",
       icon: 'el-icon-s-platform',
       hidden: false,
     },
@@ -84,11 +83,22 @@ export default {
       //   }
       // },
       {
-        path: 'user',
-        component: () => import('@/views/doctorManage/UserOrder.vue'),
-        name: 'user',
+        path: 'student',
+        component: () => import('@/views/teacherManage/student.vue'),
+        name: 'student',
         meta: {
-          title: "病患列表",
+          title: "学生管理",
+          icon: 'el-icon-tickets',
+          hidden: false,
+          roles: ['admin', 'jerry']
+         }
+        },
+      {
+        path: 'course',
+        component: () => import('@/views/teacherManage/course.vue'),
+        name: 'course',
+        meta: {
+          title: "课程管理",
           icon: 'el-icon-tickets',
           hidden: false,
           roles: ['admin','jerry']
@@ -117,7 +127,7 @@ export default {
           icon: 'el-icon-tickets',
           hidden: true,
           roles: ['admin','jerry'],
-          
+
         }
       },
       {
@@ -132,7 +142,7 @@ export default {
           roles: ['admin','jerry']
         }
       },
-    
+
     ]
   }]
     }

@@ -1,6 +1,6 @@
 <template>
     <div class="login">
-    <vue-particles 
+    <vue-particles
         class="login-bg"
         color='#39AFFD'
          :particleOpacity="0.7"
@@ -42,9 +42,9 @@
                 </el-form>
             </div>
         </div>
-    
+
     </div>
-   
+
 </template>
 
 <script>
@@ -118,14 +118,14 @@ export default {
                     this.$router.push({
                         path: this.$route.query.redirect || '/index'
                     })
-                     
+
                 })
                 .catch(err=>{
                     this.loading = true
                     // console.log(err)
                 })
             }
-           
+
         })
         }
     }
@@ -162,7 +162,7 @@ export default {
     top: 50%;
     margin-left: -175px;
     margin-top: -150px;
-   
+
 }
 .login-box-title{
     line-height: 50px;
