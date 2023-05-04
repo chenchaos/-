@@ -614,7 +614,7 @@ export default {
       this.editAddForm.am10 = row.am10;
       this.editAddForm.pm2 = row.pm2,
       this.editAddForm.pm4 = row.pm4,
-      this.editAddForm.faculty = this.faculty,  //院系
+      this.editAddForm.faculty = row.faculty,  //院系
 
       this.editAddDialog.title = "修改功课";
       this.editAddDialog.type = "edit";
