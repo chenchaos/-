@@ -56,4 +56,5 @@ public interface TeacherMapper {
 
     @Select("select * from teacher where tid=#{tid}")
     Teacher getTeacherByTid(String tid);
+
 }

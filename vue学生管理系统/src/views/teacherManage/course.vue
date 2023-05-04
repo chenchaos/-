@@ -12,7 +12,7 @@
             <el-row class="param-row">
               <el-col :span="8">
                 <el-form-item
-                  label="老师名称"
+                  label="课程名称"
                   prop="name"
                 >
                   <el-input
@@ -48,7 +48,7 @@
           :closable="false"
         >
           <div class="left">
-            教师管理
+            课程管理
           </div>
           <div class="right">
             <el-button
@@ -66,131 +66,94 @@
               @click="handleDownload"
             >
               <i class="el-icon-download" />
-             
+
               导出
             </el-button> -->
           </div>
         </el-alert>
-        <!-- 医生列表 开始 -->
-        <el-table
-          v-loading="table.tableLoading"
-          :data="table.list"
-          class="table"
-          border
-        >
-          <el-table-column
-            label="教师序号"
-            min-width="80"
+        <!-- 列表 开始 -->
+          <el-table
+                  v-loading="table.tableLoading"
+                  :data="table.list"
+                  class="table"
+                  border
           >
-            <template slot-scope="scope">
-              <span>{{ scope.row.tid }}</span>
-            </template>
-          </el-table-column>
+              <el-table-column
+                      label="课程序号"
+                      min-width="80"
+              >
+                  <template slot-scope="scope">
+                      <span>{{ scope.row.kid }}</span>
+                  </template>
+              </el-table-column>
 
-        
 
-          <el-table-column
-            label="教师名称"
-            min-width="80"
-          >
-            <template slot-scope="scope">
-              <span>{{ scope.row.name }}</span>
-            </template>
-          </el-table-column>
 
-         <el-table-column
-            label="教师院系"
-            min-width="80"
-          >
-            <template slot-scope="scope">
-              <span>{{ scope.row.faculty }}</span>
-            </template>
-          </el-table-column>
+              <el-table-column
+                      label="课程名称"
+                      min-width="80"
+              >
+                  <template slot-scope="scope">
+                      <span>{{ scope.row.name }}</span>
+                  </template>
+              </el-table-column>
 
-           <el-table-column
-            label="教师学历"
-            min-width="80"
-          >
-            <template slot-scope="scope">
-              <span>{{ scope.row.education }}</span>
-            </template>
-          </el-table-column>
+              <el-table-column
+                      label="课程开始时间"
+                      min-width="80"
+              >
+                  <template slot-scope="scope">
+                      <span>{{ parseTime(scope.row.create_time) }}</span>
+                  </template>
+              </el-table-column>
 
-           <el-table-column
-            label="教师工号"
-            min-width="80"
-          >
-            <template slot-scope="scope">
-              <span>{{ scope.row.tno }}</span>
-            </template>
-          </el-table-column>
+              <el-table-column
+                      label="课程结束时间"
+                      min-width="80"
+              >
+                  <template slot-scope="scope">
+                      <span>{{ parseTime(scope.row.end_time) }}</span>
+                  </template>
+              </el-table-column>
 
-           <el-table-column
-            label="教师职务"
-            min-width="80"
-          >
-            <template slot-scope="scope">
-              <span>{{ scope.row.post }}</span>
-            </template>
-          </el-table-column>
-         
-          <el-table-column
-            label="教师详情图片"
-            min-width="120"
-          >
-            <template slot-scope="scope">
-              <el-image 
-               v-for="(item, index) in scope.row.img "
-                :key="index"
-                style="width: 150px; height: 75px"
-                :src="item"
-              />
-            </template>
-          </el-table-column>
+              <el-table-column
+                      label="课程院系"
+                      min-width="80"
+              >
+                  <template slot-scope="scope">
+                      <span>{{ scope.row.faculty }}</span>
+                  </template>
+              </el-table-column>
 
-          <el-table-column
-            label="教师头像"
-            min-width="120"
-          >
-            <template slot-scope="scope">
-              <el-image 
-                style="width: 150px; height: 75px"
-                :src="scope.row.desc_img"
-              />
-            </template>
-          </el-table-column>
+              <el-table-column
+                      label="课程周数"
+                      min-width="80"
+              >
+                  <template slot-scope="scope">
+                      <span>{{ scope.row.weeks }}</span>
+                  </template>
+              </el-table-column>
 
-           <el-table-column
-            label="教师详情"
-            min-width="80"
-          >
-            <template slot-scope="scope">
-              <span>{{ scope.row.desc }}</span>
-            </template>
-          </el-table-column>
+              <el-table-column
+                      fixed="right"
+                      label="操作"
+              >
+                  <template slot-scope="scope">
+                      <el-button
+                              size="mini"
+                              type="primary"
+                              @click="handleEdit(scope.$index, scope.row)"
+                      >编辑</el-button>
 
-          <!-- <el-table-column
-            fixed="right"
-            label="操作"
-            width="220"
-          >
-          
-            <template slot-scope="scope">
-               <el-button
-                size="mini"
-                type="primary"
-                @click="handleEdit(scope.$index, scope.row)"
-              >修改</el-button>
-              <el-button
-                size="mini"
-                type="primary"
-                @click="handleRemove(scope.$index, scope.row)"
-              >删除</el-button>
+                      <el-button
+                              size="mini"
+                              type="danger"
+                              @click="handleRemove(scope.$index, scope.row)"
+                      >删除</el-button>
+                  </template>
 
-             
-            </template>
-          </el-table-column> -->
-        </el-table>
+              </el-table-column>
+          </el-table>
         <el-pagination
           class="pagination"
           background
@@ -215,10 +178,10 @@
           label-position="left"
           label-width="120px"
           :model="editAddForm"
-          :rules="dialogRules"
+
         >
           <el-form-item
-            label="教师名称"
+            label="课程名称"
             prop="name"
           >
             <el-input
@@ -230,97 +193,52 @@
 
 
           <el-form-item
-            label="教师院系"
+            label="课程院系"
             prop="price"
           >
             <el-input
               v-model="editAddForm.faculty"
               maxlength="355"
-              style="width:60%"
+              style="width:60%" disabled
             />
           </el-form-item>
 
-         
+
          <el-form-item
-            label="教师学历"
+            label="课程开始时间"
             prop="price"
           >
-            <el-input
-              v-model="editAddForm.education"
-              maxlength="355"
-              style="width:60%"
-            />
+             <el-date-picker
+                     v-model="editAddForm.create_time"
+                     type="datetime"
+                     placeholder="选择日期时间"
+                     default-time="12:00:00">
+             </el-date-picker>
           </el-form-item>
 
-          <el-form-item
-            label="教师工号"
-            prop="price"
-          >
-            <el-input
-              v-model="editAddForm.tno"
-              maxlength="355"
-              style="width:60%"
-            />
-          </el-form-item>
-
-          <el-form-item
-            label="教师职务"
-            prop="price"
-          >
-            <el-input
-              v-model="editAddForm.post"
-              maxlength="355"
-              style="width:60%"
-            />
-          </el-form-item>
-
-          <el-form-item
-            label="教师介绍"
-            prop="price"
-          >
-            <el-input
-              v-model="editAddForm.desc"
-              maxlength="355"
-              style="width:60%"
-            />
-          </el-form-item>
-          
-         
-            
-          <!-- action="https://jsonplaceholder.typicode.com/posts/" -->
-          <el-form-item label="教师介绍图" prop="img_id">
-                <el-upload
-                    action="http://127.0.0.1:8080/api/upload"
-                    :http-request="myUpload"
-                    :on-remove	="removeUpload"
-                    :limit="5"
-                    list-type="picture-card"
-                    :on-preview="handlePictureCardPreview"
-                    :file-list="uploadFileList"
-                    :on-success="uploadSuccess">
-                    <i class="el-icon-plus"></i>
-                </el-upload>
-                <el-dialog :visible.sync="dialogVisible">
-                    <img width="100%" :src="dialogImageUrl" alt="">
-                </el-dialog>
+            <el-form-item
+                    label="课程结束时间"
+                    prop="price"
+            >
+                <el-date-picker
+                        v-model="editAddForm.end_time"
+                        type="datetime"
+                        placeholder="选择日期时间"
+                        default-time="12:00:00">
+                </el-date-picker>
             </el-form-item>
-         
-         <el-form-item label="教师头像" prop="details_img_id">
-                <el-upload
-                    action="http://127.0.0.1:8080/api/upload"
-                    :http-request="myUploadDetail"
-                    :on-remove	="removeDetailUpload"
-                    :limit="5"
-                    list-type="picture-card"
-                    :on-preview="handlePictureCardPreview"
-                    :file-list="uploadDetailFileList"
-                    :on-success="uploadDetailSuccess">
-                    <i class="el-icon-plus"></i>
-                </el-upload>
-                <el-dialog :visible.sync="dialogVisible">
-                    <img width="100%" :src="dialogImageUrl" alt="">
-                </el-dialog>
-            </el-form-item>
+
+          <el-form-item
+            label="课程周数"
+            prop="price"
+          >
+            <el-input
+              v-model="editAddForm.weeks"
+              maxlength="355"
+              style="width:60%"
+            />
+          </el-form-item>
+
         </el-form>
         <div
           slot="footer"
@@ -339,7 +257,7 @@
         </div>
       </el-dialog>
 
-      
+
     </el-main>
   </el-container>
 </template>
@@ -366,7 +284,8 @@ export default {
   // name: 'HotProduct',
   data() {
     return {
-      //上传过的文件
+      faculty:'',
+            //上传过的文件
       uploadFileList:[{url:'https://img-blog.csdnimg.cn/f358b00e2d5f44eca9c424864bd943cf.png'}],
       // 初始化旧的所选数据集合
       oldSelectedList: [],
@@ -444,25 +363,15 @@ export default {
         user_id: "",
         dialogFormVisible: false,
       },
-      // dialogForm02: {
-      //   lvl_id: '',
-      //   lvl_num: '',
-      //   lvl_type: '',
-      //   lvl_name: '',
-      //   lvl_limit: '',
-      //   limit_type: '',
-      //   lvl_img_url: '',
-      //   lvl_validity: ''
-      // },
-      // mcd商品分类
+
       editAddForm: {
-        tid:'',//教师id
-       name:'',//教师名称
+       kid:'',// 课程id
+       name:'',//课程名称
        faculty:'',//院系
-       education:'',//学历
-       name:'',//名字
-       tno:'',//工号
-       post:'',//职务
+       tid:'',//
+       weeks:'',//
+       create_time:'',//
+       end_time:'',//
 
       },
       //商品分类数组
@@ -497,29 +406,68 @@ export default {
   created() {
     // this.initTypeList();
     this.getTableInfo();
-    // this.grantTable.list = [];
-    // this.getRightsTableInfo();
+    this.getTeacher();
+
   },
 
   // 加载方法初始化
   methods: {
-    //初始化商品分类
-    // initTypeList(){
-    //   const params ={start:0,limit:1000}
-    //    this.ccs.post('/getClassify', params).then(rs=>{
-    //         if(rs.code!='ccs'){
-    //           let rows =rs.rows
-    //           for(var i=0 ;i<rows.length;i++){
-    //             this.typeList.push({"label":rows[i].name,"value":rows[i].id})
-    //           }
-    //         }else{
-    //            this.$store.dispatch('LogMessage', "初始化商品分类失败!")
-    //         }
-    //     }).catch(err=>{
-    //       this.$store.dispatch('LogMessage', "初始化商品分类失败!")
-    //       console.log(err)
-    //     })
-    // },
+      parseTime(time, pattern) {
+          if (arguments.length === 0 || !time) {
+              return null
+          }
+          const format = pattern || '{y}-{m}-{d} {h}:{i}:{s}'
+          let date
+          if (typeof time === 'object') {
+              date = time
+          } else {
+              if ((typeof time === 'string') && (/^[0-9]+$/.test(time))) {
+                  time = parseInt(time)
+              } else if (typeof time === 'string') {
+                  time = time.replace(new RegExp(/-/gm), '/').replace('T', ' ').replace(new RegExp(/\.[\d]{3}/gm), '');
+              }
+              if ((typeof time === 'number') && (time.toString().length === 10)) {
+                  time = time * 1000
+              }
+              date = new Date(time)
+          }
+          const formatObj = {
+              y: date.getFullYear(),
+              m: date.getMonth() + 1,
+              d: date.getDate(),
+              h: date.getHours(),
+              i: date.getMinutes(),
+              s: date.getSeconds(),
+              a: date.getDay()
+          }
+          const time_str = format.replace(/{(y|m|d|h|i|s|a)+}/g, (result, key) => {
+              let value = formatObj[key]
+              // Note: getDay() returns 0 on Sunday
+              if (key === 'a') { return ['日', '一', '二', '三', '四', '五', '六'][value] }
+              if (result.length > 0 && value < 10) {
+                  value = '0' + value
+              }
+              return value || 0
+          })
+          return time_str
+      },
+      getTeacher() {
+          const  params = {
+              tid: sessionStorage.getItem("teacher_id"),
+          }
+
+          this.ccs.post('/getTeacher', params).then(rs=>{
+              if(rs.code!='ccs'){
+                  this.faculty = rs.loginTeacher.faculty;
+              }else{
+                  this.$store.dispatch('LogMessage', "查询成功!")
+              }
+          }).catch(err=>{
+              this.$store.dispatch('LogMessage', "查询失败!")
+              console.log(err)
+          })
+      },
+
     //上传图片数组
     handlePictureCardPreview(file){
       console.log(file)
@@ -569,82 +517,55 @@ export default {
       this.getTableInfo();
     },
     handleSearchClear() {
-      this.searchForm.lvl_num = "";
-      this.searchForm.lvl_name = "";
-      this.searchForm.lvl_type = "";
+      this.searchForm.name = "";
     },
     // 商品分类--新增初始化
     handleAdd() {
-      // this.v.role_nm = ''
-      this.editAddForm.name='',
-      this.editAddForm.type_id =''
-      this.editAddForm.group_num =''
-      this.editAddForm.price =''
-      this.editAddForm.recommend_num =''
-      this.editAddForm.details ='',
-      this.uoloadFileListCcs =[],
-      this.uploadFileList =[],
-      this.uoloadDetailFileListCcs=[],
-      this.uploadDetailFileList=[]
-      this.editAddDialog.title = "新增教师";
+     this.editAddForm={
+            kid:'',    // 课程id
+            name:'',   //课程名称
+            faculty:this.faculty,  //院系
+            tid:sessionStorage.getItem("teacher_id"),    //
+            weeks:'',  //
+            create_time:'', //
+            end_time:''  //
+      },
+
+      this.editAddDialog.title = "新增课程";
       this.editAddDialog.type = "add";
       this.editAddDialog.visible = true;
-      // if (this.$refs.logoRef) {
-      //   this.$refs.logoRef.clearFiles();
-      // }
+
+    },
+    // 修改
+    handleEdit(index, row) {
+      this.editAddForm.kid =row.kid;
+      this.editAddForm.name = row.name;
+      this.editAddForm.weeks = row.weeks;
+      this.editAddForm.create_time = row.create_time;
+      this.editAddForm.end_time = row.end_time,
+      this.editAddForm.faculty = this.faculty,  //院系
+      this.editAddForm.tid = sessionStorage.getItem("teacher_id"),
+
+      this.editAddDialog.title = "修改课程";
+      this.editAddDialog.type = "edit";
+      this.editAddDialog.visible = true;
+
+
       // this.$nextTick(() => {
       //   this.$refs["editAddForm"].clearValidate();
       // });
-    },
-    // 修改商品分类--编辑初始化
-    handleEdit(index, row) {
-      this.editAddForm.details=row.details
-      this.editAddForm.id =row.id;
-      this.editAddForm.name = row.name;
-      this.editAddForm.type_id = row.type_id;
-      this.editAddForm.type_name = row.type_name;
-      this.editAddForm.group_num =row.group_num
-      this.editAddForm.price =row.price
-      this.editAddForm.recommend_num =row.recommend_num
-      this.uoloadFileListCcs =[] //刷新上传图片的数组
-      this.uoloadDetailFileListCcs =[] //刷新上传图片的数组
-      this.editAddDialog.title = "修改商品分类";
-      this.editAddDialog.type = "edit";
-      this.editAddDialog.visible = true;
-      this.logolist.length = 0;
-      console.log(row.lvl_img_url);
-      // if (this.$refs.logoRef) {
-      //   this.$refs.logoRef.clearFiles()
-      // }
-      // this.logofilelist = [{ url: row.lvl_img_url }]
-      this.uploadFileList = [];
-      for(var i=0;i<row.img.length;i++){
-        this.uploadFileList.push({
-        u_id: "",
-        url: row.img[i],
-      });
-      }
-      this.uploadDetailFileList = [];
-      this.uploadDetailFileList.push({
-        u_id: "",
-        url: row.dimg,
-      });
-
-      this.$nextTick(() => {
-        this.$refs["editAddForm"].clearValidate();
-      });
     },
     getTableInfo() {
       this.table.tableLoading = true;
         // url: 'NTMBizMember/iwap.ctrl',
        const  params = {
-          // 分类名称
+          tid: sessionStorage.getItem("teacher_id"),
           name: this.searchForm.name,
           start: this.table.start,
           limit: this.table.limit,
         }
-       
-    this.ccs.post('/getTeacherPage', params).then(rs=>{
+
+    this.ccs.post('/getTeacherCoursePage', params).then(rs=>{
             if(rs.code!='ccs'&&rs.rows && Array.isArray(rs.rows)){
                this.table.tableLoading = false;
                this.table.list = rs.rows;
@@ -656,45 +577,22 @@ export default {
           this.$store.dispatch('LogMessage', "查询失败!")
           console.log(err)
         })
-        // .then((response) => {
-        //   this.table.tableLoading = false;
-        //   if (response.header.msg) {
-        //     this.$notify({
-        //       title: "提示",
-        //       message: response.header.msg,
-        //       type: "warning",
-        //     });
-        //   } else {
-        //     const data = response.body;
-        //     if (data.rows && Array.isArray(data.rows)) {
-        //       this.table.list = data.rows;
-        //       this.table.total = data.total || 0;
-        //     }
-        //   }
-        // })
-        // .catch((err) => {
-        //   console.error(err);
-        // });
+
     },
     // 删除会员等级
     handleRemove(el, row) {
-      this.$confirm(`是否将会员等级删除${row.lvl_id}?`, "提示", {
+      this.$confirm(`是否删除${row.name}?`, "提示", {
         cancelButtonText: "取消",
         confirmButtonText: "确定",
         type: "warning",
       }).then(() => {
-        removeRow({
-          // url: 'NTMBizMember/iwap.ctrl',
-          params: {
-            lvl_id: row.lvl_id,
-          },
-        })
+          this.ccs.get('/removeCourse?kid='+row.kid)
           .then((response) => {
-            if (response.header.msg) {
-              this.$message.error(response.header.msg);
+            if(response.code=='ccs') {
+              this.$message.error(response.msg);
             } else {
               this.$message({
-                message: "会员等级删除成功",
+                message: "删除成功",
                 type: "success",
               });
               this.getTableInfo();
@@ -731,46 +629,17 @@ export default {
       this.$refs["editAddForm"].validate((valid) => {
         if (valid) {
           if (this.editAddDialog.type === "add") {
-            let img_id_add =""
-            for(var i=0;i<this.uoloadFileListCcs.length;i++){
-              img_id_add+=this.uoloadFileListCcs[i]
-              img_id_add+=","
-            }
-          if(this.uoloadFileListCcs.length<3){
-           this.$message({
-            type: 'warning',
-            message: '医生头像最少需要三张，或图片未上传完成,请稍等后再提交！'
-            })
-              return
-            }
-          if(this.uoloadDetailFileListCcs.length==0){
-            this.$message({
-            type: 'warning',
-            message: '未上传商品详情图片或图片未上传完成,请稍等后再提交!'
-            })
-              return
-            }
-            // 添加商品
-            const params = {
-              name:this.editAddForm.name,
-              desc: this.editAddForm.desc,
-              faculty:this.editAddForm.faculty,
-              education:this.editAddForm.education,
-              tno:this.editAddForm.tno,
-              post:this.editAddForm.post,
-              img_id: img_id_add.substring(0,img_id_add.length-1),
-              desc_img_id:this.uoloadDetailFileListCcs[0]
-            };
-            this.ccs.post('/addTeacher', params).then(rs=>{
+            // 添加
+            this.ccs.post('/addCourse', this.editAddForm).then(rs=>{
             if(rs.code!='ccs'){
               this.$message({
-                    message: "添加教师成功",
+                    message: "添加课程成功",
                     type: "success",
                   });
                   this.editAddDialog.visible = false;
                   this.getTableInfo();
             }else{
-               this.$store.dispatch('LogMessage', "添加教师失败!")
+               this.$store.dispatch('LogMessage', "添加课程失败!")
             }
         }).catch(err=>{
           this.$store.dispatch('LogMessage', "添加医生失败!")
@@ -778,23 +647,7 @@ export default {
         })
        } else {
             // 修改
-            let img_id_add =""
-            for(var i=0;i<this.uoloadFileListCcs.length;i++){
-              img_id_add+=this.uoloadFileListCcs[i]
-              img_id_add+=","
-            }
-            const params = {
-              details:this.editAddForm.details,
-              id :this.editAddForm.id,
-              name: this.editAddForm.name,
-              type_id: this.editAddForm.type_id,
-              group_num:this.editAddForm.group_num,
-              price:this.editAddForm.price,
-              recommend_num:this.editAddForm.recommend_num,
-              img_id: img_id_add.substring(0,img_id_add.length-1),
-              details_img_id:this.uoloadDetailFileListCcs[0],
-            };
-            this.ccs.post('/editMcd', params).then(rs=>{
+            this.ccs.post('/editCourse', this.editAddForm).then(rs=>{
             if(rs.code!='ccs'){
               this.$message({
                     message: "编辑成功",
@@ -811,7 +664,7 @@ export default {
         })
          }
        }
-        
+
       });
     },
     handleGrant(index, row) {

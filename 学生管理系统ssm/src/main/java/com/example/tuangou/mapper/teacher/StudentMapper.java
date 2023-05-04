@@ -21,11 +21,19 @@ import java.util.List;
 //此处的@Mapper注解可以放在启动类上这样不用每个Mapper接口上都加
 public interface StudentMapper {
 
-    //新增老师
+    //新增学生
     @Insert("insert into student(sid, sex, name,sno,faculty,passwork,img_id,teacher_id) " +
             "values(#{sid},#{sex},#{name},#{sno},#{faculty},#{passwork},#{img_id},#{teacher_id})")
     @Options(useGeneratedKeys = true,keyProperty = "sid",keyColumn = "sid")
     void addStudent(Student student);
+
+
+    //更新学生
+    @Update("update student set sex=#{sex}, name=#{name}, sno=#{sno},faculty#{faculty}," +
+            " passwork=#{passwork}, img_id=#{img_id}, teacher_id=#{teacher_id} " +
+            " where sid=#{sid} ")
+    void updateStudent(Student student);
+
 
     /**
      * 查询分页 (管理端)
@@ -74,5 +82,16 @@ public interface StudentMapper {
     // 修改评分
     @Update("Update kscore set sid=#{sid}, kid=#{kid}, score=#{score} where id=#{id} ")
     void updateKscore(Kscore kscore);
+
+
+    // 查询评分 由于int 初始值为0,得判断
+    @Select("<script>" +
+            " select * from kscore where 1 = 1 " +
+            " <when test='sid !=null and sid!=0'> and sid = #{sid} </when>  " +
+            " <when test='kid !=null  and kid!=0'> and kid = #{kid} </when>  " +
+            " <when test='score !=null'> and score = #{score} </when>  " +
+            " <when test='id !=null  and id!=0'> and id = #{id} </when>  " +
+            "</script> ")
+    List<Kscore> getKscore(Kscore kscore);
 
 }

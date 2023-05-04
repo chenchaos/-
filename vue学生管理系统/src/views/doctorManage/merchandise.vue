@@ -66,7 +66,7 @@
               @click="handleDownload"
             >
               <i class="el-icon-download" />
-             
+
               导出
             </el-button> -->
           </div>
@@ -87,7 +87,7 @@
             </template>
           </el-table-column>
 
-        
+
 
           <el-table-column
             label="教师名称"
@@ -133,13 +133,13 @@
               <span>{{ scope.row.post }}</span>
             </template>
           </el-table-column>
-         
+
           <el-table-column
             label="教师详情图片"
             min-width="120"
           >
             <template slot-scope="scope">
-              <el-image 
+              <el-image
                v-for="(item, index) in scope.row.img "
                 :key="index"
                 style="width: 150px; height: 75px"
@@ -153,7 +153,7 @@
             min-width="120"
           >
             <template slot-scope="scope">
-              <el-image 
+              <el-image
                 style="width: 150px; height: 75px"
                 :src="scope.row.desc_img"
               />
@@ -174,7 +174,7 @@
             label="操作"
             width="220"
           >
-          
+
             <template slot-scope="scope">
                <el-button
                 size="mini"
@@ -187,7 +187,7 @@
                 @click="handleRemove(scope.$index, scope.row)"
               >删除</el-button>
 
-             
+
             </template>
           </el-table-column> -->
         </el-table>
@@ -240,7 +240,7 @@
             />
           </el-form-item>
 
-         
+
          <el-form-item
             label="教师学历"
             prop="price"
@@ -284,9 +284,9 @@
               style="width:60%"
             />
           </el-form-item>
-          
-         
-            
+
+
+
           <!-- action="https://jsonplaceholder.typicode.com/posts/" -->
           <el-form-item label="教师介绍图" prop="img_id">
                 <el-upload
@@ -304,7 +304,7 @@
                     <img width="100%" :src="dialogImageUrl" alt="">
                 </el-dialog>
             </el-form-item>
-         
+
          <el-form-item label="教师头像" prop="details_img_id">
                 <el-upload
                     action="http://127.0.0.1:8080/api/upload"
@@ -339,7 +339,7 @@
         </div>
       </el-dialog>
 
-      
+
     </el-main>
   </el-container>
 </template>
@@ -569,9 +569,7 @@ export default {
       this.getTableInfo();
     },
     handleSearchClear() {
-      this.searchForm.lvl_num = "";
-      this.searchForm.lvl_name = "";
-      this.searchForm.lvl_type = "";
+      this.searchForm.name = "";
     },
     // 商品分类--新增初始化
     handleAdd() {
@@ -643,7 +641,7 @@ export default {
           start: this.table.start,
           limit: this.table.limit,
         }
-       
+
     this.ccs.post('/getTeacherPage', params).then(rs=>{
             if(rs.code!='ccs'&&rs.rows && Array.isArray(rs.rows)){
                this.table.tableLoading = false;
@@ -811,7 +809,7 @@ export default {
         })
          }
        }
-        
+
       });
     },
     handleGrant(index, row) {

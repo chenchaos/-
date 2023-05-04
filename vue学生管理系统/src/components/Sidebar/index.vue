@@ -142,6 +142,18 @@ export default {
           roles: ['admin','jerry']
         }
       },
+      {
+        path: 'timetable',
+        component: () => import('@/views/adminManage/timetable.vue'),
+        name: 'timetable',
+        meta: {
+          title: "功课管理",
+          icon: 'el-icon-tickets',
+          hidden: false,
+          roles: ['admin','jerry'],
+
+        }
+      },
 
     ]
   }]

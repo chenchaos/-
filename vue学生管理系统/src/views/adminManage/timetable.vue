@@ -12,11 +12,12 @@
             <el-row class="param-row">
               <el-col :span="8">
                 <el-form-item
-                  label="学生名称"
-                  prop="name"
+                  label="院系"
+                  prop="faculty"
                 >
                   <el-input
-                    v-model="searchForm.name"
+                          placeholder="例如：计算机学院"
+                          v-model="searchForm.faculty"
                     maxlength="60"
                   />
                 </el-form-item>
@@ -48,7 +49,7 @@
           :closable="false"
         >
           <div class="left">
-            学生管理
+            功课管理
           </div>
           <div class="right">
             <el-button
@@ -71,81 +72,98 @@
             </el-button> -->
           </div>
         </el-alert>
-        <!-- 学生列表 开始 -->
-        <el-table
-          v-loading="table.tableLoading"
-          :data="table.list"
-          class="table"
-          border
-        >
-          <el-table-column
-            label="学生序号"
-            min-width="80"
+        <!-- 列表 开始 -->
+          <el-table
+                  v-loading="table.tableLoading"
+                  :data="table.list"
+                  class="table"
+                  border
           >
-            <template slot-scope="scope">
-              <span>{{ scope.row.sid }}</span>
-            </template>
-          </el-table-column>
+              <el-table-column
+                      label="功课序号"
+                      min-width="80"
+                      v-if="false"
+              >
+                  <template slot-scope="scope">
+                      <span>{{ scope.row.id }}</span>
+                  </template>
+              </el-table-column>
+
+              <el-table-column
+                      label="星期几"
+                      min-width="80"
+              >
+                  <template slot-scope="scope">
+                      <span>{{ parseWeekday(scope.row.weekday) }}</span>
+                  </template>
+              </el-table-column>
 
 
+              <el-table-column
+                      label="上午8-9点"
+                      min-width="80"
+              >
+                  <template slot-scope="scope">
+                      <span>{{ scope.row.am8 }}</span>
+                  </template>
+              </el-table-column>
 
-          <el-table-column
-            label="学生名称"
-            min-width="80"
-          >
-            <template slot-scope="scope">
-              <span>{{ scope.row.name }}</span>
-            </template>
-          </el-table-column>
+              <el-table-column
+                      label="上午10-11点"
+                      min-width="80"
+              >
+                  <template slot-scope="scope">
+                      <span>{{ scope.row.am10 }}</span>
+                  </template>
+              </el-table-column>
 
-         <el-table-column
-            label="学生院系"
-            min-width="80"
-          >
-            <template slot-scope="scope">
-              <span>{{ scope.row.faculty }}</span>
-            </template>
-          </el-table-column>
+              <el-table-column
+                      label="下午2-3点"
+                      min-width="80"
+              >
+                  <template slot-scope="scope">
+                      <span>{{ scope.row.pm2}}</span>
+                  </template>
+              </el-table-column>
 
-           <el-table-column
-            label="学生学号"
-            min-width="80"
-          >
-            <template slot-scope="scope">
-              <span>{{ scope.row.sno }}</span>
-            </template>
-          </el-table-column>
+              <el-table-column
+                      label="下午4-5点"
+                      min-width="80"
+              >
+                  <template slot-scope="scope">
+                      <span>{{ scope.row.pm4 }}</span>
+                  </template>
+              </el-table-column>
 
+              <el-table-column
+                      label="功课院系"
+                      min-width="80"
+              >
+                  <template slot-scope="scope">
+                      <span>{{ scope.row.faculty }}</span>
+                  </template>
+              </el-table-column>
 
-          <el-table-column
-            label="学生头像"
-            min-width="120"
-          >
-            <template slot-scope="scope">
-              <el-image
-                style="width: 150px; height: 75px"
-                :src="scope.row.img"
-              />
-            </template>
-          </el-table-column>
+              <el-table-column
+                      fixed="right"
+                      label="操作"
+              >
+                  <template slot-scope="scope">
+                      <el-button
+                              size="mini"
+                              type="primary"
+                              @click="handleEdit(scope.$index, scope.row)"
+                      >编辑</el-button>
 
-          <el-table-column
-            fixed="right"
-            label="操作"
-            width="220"
-           >
+                      <el-button
+                              size="mini"
+                              type="danger"
+                              @click="handleRemove(scope.$index, scope.row)"
+                      >删除</el-button>
+                  </template>
 
-            <template slot-scope="scope">
-               <el-button
-                size="mini"
-                type="primary"
-                @click="handleScore(scope.$index, scope.row)"
-              >评分</el-button>
-
-            </template>
-          </el-table-column>
-
-        </el-table>
+              </el-table-column>
+          </el-table>
         <el-pagination
           class="pagination"
           background
@@ -170,30 +188,13 @@
           label-position="left"
           label-width="120px"
           :model="editAddForm"
-          :rules="dialogRules"
         >
-          <el-form-item
-            label="学生名称"
-            prop="name"
-          >
-            <el-input
-              v-model="editAddForm.name"
-              maxlength="20"
-              style="width:60%"
-            />
-          </el-form-item>
-
 
           <el-form-item
-            label="学生性别"
-            prop="sex"
-          >
-<!--            <el-input-->
-<!--              v-model="editAddForm.sex"-->
-<!--              maxlength="355"-->
-<!--              style="width:60%"-->
-<!--            />-->
-              <el-select v-model="editAddForm.sex" placeholder="请选择">
+                    label="星期几"
+                    prop="name"
+            >
+              <el-select v-model="editAddForm.weekday" placeholder="请选择">
                   <el-option
                           v-for="item in options"
                           :key="item.value"
@@ -201,49 +202,70 @@
                           :value="item.value">
                   </el-option>
               </el-select>
-          </el-form-item>
+            </el-form-item>
 
-
-         <el-form-item
-            label="学生学号"
-            prop="sno"
+          <el-form-item
+            label="上午8-10点功课"
+            prop=""
           >
             <el-input
-              v-model="editAddForm.sno"
-              maxlength="355"
+              v-model="editAddForm.am8"
+              maxlength="20"
               style="width:60%"
+              placeholder="例如：高等数学"
             />
           </el-form-item>
 
+            <el-form-item
+                    label="上午10-11点功课"
+                    prop=""
+            >
+                <el-input
+                        v-model="editAddForm.am10"
+                        maxlength="20"
+                        style="width:60%"
+                        placeholder="例如：高等数学"
+                />
+            </el-form-item>
+
+            <el-form-item
+                    label="上午2-3点功课"
+                    prop=""
+            >
+                <el-input
+                        v-model="editAddForm.pm2"
+                        maxlength="20"
+                        style="width:60%"
+                        placeholder="例如：高等数学"
+                />
+            </el-form-item>
+
+            <el-form-item
+                    label="上午4-5点功课"
+                    prop=""
+            >
+                <el-input
+                        v-model="editAddForm.pm4"
+                        maxlength="20"
+                        style="width:60%"
+                        placeholder="例如：高等数学"
+                />
+            </el-form-item>
+
           <el-form-item
-            label="学生院系"
-            prop="price"
+            label="功课院系"
+            prop=""
           >
             <el-input
               v-model="editAddForm.faculty"
               maxlength="355"
-              style="width:60%" disabled
+              style="width:60%"
+              placeholder="例如：计算机学院"
             />
           </el-form-item>
 
-
-         <el-form-item label="学生头像" prop="img_id">
-                <el-upload
-                    action="http://127.0.0.1:8080/api/upload"
-                    :http-request="myUploadDetail"
-                    :on-remove	="removeDetailUpload"
-                    :limit="1"
-                    list-type="picture-card"
-                    :on-preview="handlePictureCardPreview"
-                    :file-list="this.uploadDetailFileList"
-                    :on-success="uploadDetailSuccess">
-                    <i class="el-icon-plus"></i>
-                </el-upload>
-                <el-dialog :visible.sync="dialogVisible">
-                    <img width="100%" :src="dialogImageUrl" alt="">
-                </el-dialog>
-            </el-form-item>
         </el-form>
+
         <div
           slot="footer"
           class="dialog-footer"
@@ -261,7 +283,6 @@
         </div>
       </el-dialog>
 
-     <SelectCourse ref="selectCourse" />
 
     </el-main>
   </el-container>
@@ -278,26 +299,44 @@
 //   saveGrant,
 // } from "@/api/userMemberGrade";
 // import Upload from "@/components/Upload";
-import SelectCourse from '../teacherManage/selectCourse';
+// import { parseTime } from "@/utils";
 
 export default {
   // 加载组件
-  components: {
-    SelectCourse,
-  },
+  // components: {
+  //   Upload,
+  // },
 
   // name: 'HotProduct',
   data() {
     return {
-        faculty: '',
         options: [{
-            value: '男',
-            label: '男'
+            value: '1',
+            label: '星期一'
         }, {
-            value: '女',
-            label: '女'
-        }],
-      //上传过的文件
+            value: '2',
+            label: '星期二'
+        }, {
+            value: '3',
+            label: '星期三'
+        }, {
+            value: '4',
+            label: '星期四'
+        }, {
+            value: '5',
+            label: '星期五'
+        }, {
+            value: '6',
+            label: '星期六'
+        }, {
+            value: '7',
+            label: '星期日'
+        }
+
+        ],
+
+      faculty:'',
+            //上传过的文件
       uploadFileList:[{url:'https://img-blog.csdnimg.cn/f358b00e2d5f44eca9c424864bd943cf.png'}],
       // 初始化旧的所选数据集合
       oldSelectedList: [],
@@ -367,7 +406,8 @@ export default {
         currentPage: 1,
       },
       searchForm: {
-        name:''
+        faculty:'',
+        weekday:''
       },
       dialog02: {
         title: "",
@@ -376,16 +416,14 @@ export default {
         dialogFormVisible: false,
       },
 
-      //学生对象
       editAddForm: {
-       sid:'',//学生id
-       name:'',//学生名称
-       sex:'',//院系
-       faculty:'',//院系
-       img_id:'',//名字
-       passwork:'',//工号
-       img:'',//职务
-       teacher_id:''
+          id:'',    // 功课id
+          am2:'',   //功课名称
+          am8:'',   //
+          weekday:'',  //
+          pm2:'', //
+          pm4:'',  //
+          faculty:''//院系
       },
       //商品分类数组
       typeList:[],
@@ -396,10 +434,10 @@ export default {
       },
       dialogRules: {
         name: [
-          { required: true, message: "请输入学生名称", trigger: "blur" },
+          { required: true, message: "请输入医生名称", trigger: "blur" },
         ],
         desc: [
-          { required: true, message: "请输入学生详情", trigger: "blur" },
+          { required: true, message: "请输入医生详情", trigger: "blur" },
         ],
         // img_id: [
         //   { required: true, message: "请上传商品图片", trigger: "blur" },
@@ -417,19 +455,86 @@ export default {
     };
   },
   created() {
-    // this.initTypeList();
     this.getTableInfo();
-    // this.grantTable.list = [];
-    // this.getRightsTableInfo();
-    this.getTeacher();
+
   },
 
   // 加载方法初始化
   methods: {
-    // 点击评分按钮，打开课程列表
-    handleScore(index, row) {
-        this.$refs.selectCourse.getSid(row.sid, row.name);
-    },
+      parseWeekday(val) {
+         if (val == '1') {
+             return "星期一"
+         } else if (val == '2') {
+             return "星期二"
+         } else if (val == '3') {
+             return "星期三"
+         }  else if (val == '4') {
+             return "星期四"
+         }  else if (val == '5') {
+             return "星期五"
+         }  else if (val == '6') {
+             return "星期六"
+         }  else if (val == '7') {
+             return "星期日"
+         }
+         return ''
+      },
+
+      parseTime(time, pattern) {
+          if (arguments.length === 0 || !time) {
+              return null
+          }
+          const format = pattern || '{y}-{m}-{d} {h}:{i}:{s}'
+          let date
+          if (typeof time === 'object') {
+              date = time
+          } else {
+              if ((typeof time === 'string') && (/^[0-9]+$/.test(time))) {
+                  time = parseInt(time)
+              } else if (typeof time === 'string') {
+                  time = time.replace(new RegExp(/-/gm), '/').replace('T', ' ').replace(new RegExp(/\.[\d]{3}/gm), '');
+              }
+              if ((typeof time === 'number') && (time.toString().length === 10)) {
+                  time = time * 1000
+              }
+              date = new Date(time)
+          }
+          const formatObj = {
+              y: date.getFullYear(),
+              m: date.getMonth() + 1,
+              d: date.getDate(),
+              h: date.getHours(),
+              i: date.getMinutes(),
+              s: date.getSeconds(),
+              a: date.getDay()
+          }
+          const time_str = format.replace(/{(y|m|d|h|i|s|a)+}/g, (result, key) => {
+              let value = formatObj[key]
+              // Note: getDay() returns 0 on Sunday
+              if (key === 'a') { return ['日', '一', '二', '三', '四', '五', '六'][value] }
+              if (result.length > 0 && value < 10) {
+                  value = '0' + value
+              }
+              return value || 0
+          })
+          return time_str
+      },
+      getTeacher() {
+          const  params = {
+              tid: sessionStorage.getItem("teacher_id"),
+          }
+
+          this.ccs.post('/getTeacher', params).then(rs=>{
+              if(rs.code!='ccs'){
+                  this.faculty = rs.loginTeacher.faculty;
+              }else{
+                  this.$store.dispatch('LogMessage', "查询成功!")
+              }
+          }).catch(err=>{
+              this.$store.dispatch('LogMessage', "查询失败!")
+              console.log(err)
+          })
+      },
 
     //上传图片数组
     handlePictureCardPreview(file){
@@ -480,76 +585,56 @@ export default {
       this.getTableInfo();
     },
     handleSearchClear() {
-      this.searchForm.name = "";
+      this.searchForm.faculty = "";
+      this.searchForm.weekday = "";
     },
-    // 学生新增
+    // 商品分类--新增初始化
     handleAdd() {
-      this.editAddForm={
-          sid:'',//学生id
-          name:'',//学生名称
-          sex:'',//院系
-          faculty: this.faculty,//院系
-          img_id:'',//名字
-          passwork:'',//工号
-          img:'',//职务
-          teacher_id:''
-      },
-      this.uoloadFileListCcs =[],
-      this.uploadFileList =[],
-      this.uoloadDetailFileListCcs=[],
-      this.uploadDetailFileList=[]
-      this.editAddDialog.title = "新增学生";
+     this.editAddForm={
+            id:'',    // 功课id
+            am2:'',   //功课名称
+            am8:'',   //
+            weekday:'',  //
+            pm2:'', //
+            pm4:'',  //
+            faculty:''//院系
+
+     },
+
+      this.editAddDialog.title = "新增功课";
       this.editAddDialog.type = "add";
       this.editAddDialog.visible = true;
 
     },
-    // 修改商品分类--编辑初始化
+    // 修改
     handleEdit(index, row) {
-      this.editAddForm.details=row.details
       this.editAddForm.id =row.id;
-      this.editAddForm.name = row.name;
-      this.editAddForm.type_id = row.type_id;
-      this.editAddForm.type_name = row.type_name;
-      this.editAddForm.group_num =row.group_num
-      this.editAddForm.price =row.price
-      this.editAddForm.recommend_num =row.recommend_num
-      this.uoloadFileListCcs =[] //刷新上传图片的数组
-      this.editAddDialog.title = "修改学生信息";
+      this.editAddForm.am8 = row.am8;
+      this.editAddForm.weekday = row.weekday;
+      this.editAddForm.am10 = row.am10;
+      this.editAddForm.pm2 = row.pm2,
+      this.editAddForm.pm4 = row.pm4,
+      this.editAddForm.faculty = this.faculty,  //院系
+
+      this.editAddDialog.title = "修改功课";
       this.editAddDialog.type = "edit";
       this.editAddDialog.visible = true;
-      this.logolist.length = 0;
-      console.log(row.lvl_img_url);
-      // if (this.$refs.logoRef) {
-      //   this.$refs.logoRef.clearFiles()
-      // }
-      // this.logofilelist = [{ url: row.lvl_img_url }]
-      this.uploadFileList = [];
-      for(var i=0;i<row.img.length;i++){
-        this.uploadFileList.push({
-        u_id: "",
-        url: row.img[i],
-      });
-      }
-      this.uploadDetailFileList = [];
-      this.uploadDetailFileList.push({
-        u_id: "",
-        url: row.dimg,
-      });
 
-      this.$nextTick(() => {
-        this.$refs["editAddForm"].clearValidate();
-      });
+
+      // this.$nextTick(() => {
+      //   this.$refs["editAddForm"].clearValidate();
+      // });
     },
     getTableInfo() {
       this.table.tableLoading = true;
-      const  params = {
-          teacher_id: sessionStorage.getItem("teacher_id"),
-          name: this.searchForm.name,
+       const params = {
+          weekday: this.searchForm.weekday,
+          faculty: this.searchForm.faculty,
           start: this.table.start,
           limit: this.table.limit,
         }
 
-    this.ccs.post('/getTeacherStudentPage', params).then(rs=>{
+    this.ccs.post('/getTeacherTimetablePage', params).then(rs=>{
             if(rs.code!='ccs'&&rs.rows && Array.isArray(rs.rows)){
                this.table.tableLoading = false;
                this.table.list = rs.rows;
@@ -561,45 +646,23 @@ export default {
           this.$store.dispatch('LogMessage', "查询失败!")
           console.log(err)
         })
-        // .then((response) => {
-        //   this.table.tableLoading = false;
-        //   if (response.header.msg) {
-        //     this.$notify({
-        //       title: "提示",
-        //       message: response.header.msg,
-        //       type: "warning",
-        //     });
-        //   } else {
-        //     const data = response.body;
-        //     if (data.rows && Array.isArray(data.rows)) {
-        //       this.table.list = data.rows;
-        //       this.table.total = data.total || 0;
-        //     }
-        //   }
-        // })
-        // .catch((err) => {
-        //   console.error(err);
-        // });
+
     },
     // 删除会员等级
     handleRemove(el, row) {
-      this.$confirm(`是否将会员等级删除${row.lvl_id}?`, "提示", {
+      console.log("删除id" + row.id);
+      this.$confirm(`是否删除?`, "提示", {
         cancelButtonText: "取消",
         confirmButtonText: "确定",
         type: "warning",
       }).then(() => {
-        removeRow({
-          // url: 'NTMBizMember/iwap.ctrl',
-          params: {
-            lvl_id: row.lvl_id,
-          },
-        })
+          this.ccs.get('/removeTimetable?id='+row.id)
           .then((response) => {
-            if (response.header.msg) {
-              this.$message.error(response.header.msg);
+            if(response.code=='ccs') {
+              this.$message.error(response.msg);
             } else {
               this.$message({
-                message: "会员等级删除成功",
+                message: "删除成功",
                 type: "success",
               });
               this.getTableInfo();
@@ -636,67 +699,25 @@ export default {
       this.$refs["editAddForm"].validate((valid) => {
         if (valid) {
           if (this.editAddDialog.type === "add") {
-            // let img_id_add =""
-            // for(var i=0;i<this.uoloadFileListCcs.length;i++){
-            //   img_id_add+=this.uoloadFileListCcs[i]
-            //   img_id_add+=","
-            // }
-          // if(this.uoloadFileListCcs.length<3){
-          //  this.$message({
-          //   type: 'warning',
-          //   message: '学生头像最少需要三张，或图片未上传完成,请稍等后再提交！'
-          //   })
-          //     return
-          //   }
-          if(this.uoloadDetailFileListCcs.length==0){
-            this.$message({
-            type: 'warning',
-            message: '未上传图片或图片未上传完成,请稍等后再提交!'
-            })
-              return
-            }
             // 添加
-           this.editAddForm.teacher_id = sessionStorage.getItem("teacher_id")
-            const params = {
-              name:this.editAddForm.name,
-              sid: this.editAddForm.sid,
-              sex:this.editAddForm.sex,
-              sno:this.editAddForm.sno,
-              teacher_id:this.editAddForm.teacher_id,
-              post:this.editAddForm.post,
-              // img_id: img_id_add.substring(0,img_id_add.length-1),
-              img_id:this.uoloadDetailFileListCcs[0]
-            };
-            this.ccs.post('/addStudent', params).then(rs=>{
+            this.ccs.post('/addTimetable', this.editAddForm).then(rs=>{
             if(rs.code!='ccs'){
               this.$message({
-                    message: "添加学生成功",
+                    message: "添加功课成功",
                     type: "success",
                   });
                   this.editAddDialog.visible = false;
                   this.getTableInfo();
             }else{
-               this.$store.dispatch('LogMessage', "添加学生失败!")
+               this.$store.dispatch('LogMessage', "添加功课失败!")
             }
         }).catch(err=>{
-          this.$store.dispatch('LogMessage', "添加学生失败!")
+          this.$store.dispatch('LogMessage', "添加医生失败!")
           console.log(err)
         })
        } else {
             // 修改
-            let img_id_add =""
-            const params = {
-              details:this.editAddForm.details,
-              id :this.editAddForm.id,
-              name: this.editAddForm.name,
-              type_id: this.editAddForm.type_id,
-              group_num:this.editAddForm.group_num,
-              price:this.editAddForm.price,
-              recommend_num:this.editAddForm.recommend_num,
-              img_id: img_id_add.substring(0,img_id_add.length-1),
-              details_img_id:this.uoloadFileListCcs[0],
-            };
-            this.ccs.post('/editMcd', params).then(rs=>{
+            this.ccs.post('/editTimetable', this.editAddForm).then(rs=>{
             if(rs.code!='ccs'){
               this.$message({
                     message: "编辑成功",
@@ -917,25 +938,7 @@ export default {
     submitLogoSuccess() {
       this.handleSubmit();
     },
-
-      getTeacher() {
-          const  params = {
-              tid: sessionStorage.getItem("teacher_id"),
-          }
-
-          this.ccs.post('/getTeacher', params).then(rs=>{
-              if(rs.code!='ccs'){
-                  this.faculty = rs.loginTeacher.faculty;
-              }else{
-                  this.$store.dispatch('LogMessage', "查询成功!")
-              }
-          }).catch(err=>{
-              this.$store.dispatch('LogMessage', "查询失败!")
-              console.log(err)
-          })
-      }
-  }
-
+  },
 };
 </script>
 

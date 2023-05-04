@@ -46,88 +46,88 @@ export const constRouter = [
 // 动态路由 communication
 export const asyncRoutes = [
 
-  {
-    path: '/goods',
-    component: Layout,
-    redirect: '/goods/index',
-    meta:{
-      title: "产品管理",
-      icon: 'el-icon-s-goods',
-      hidden: false,
-    },
-    children: [
-      {
-        path: 'fromgood',
-        component: () => import('@/views/goods/FromGood.vue'),
-        name: 'fromgood',
-        meta: {
-          title: "添加(编辑产品)",
-          icon: 'el-icon-tickets',
-          hidden: true,
-          roles: ['admin','jerry'],
-
-        }
-      },
-      {
-        path: 'onindex',
-        component: () => import('@/views/goods/merchandise.vue'),
-        // component: () => import('@/views/goods/OnIndex.vue'),
-        name: 'onindex',
-        meta: {
-          title: "生活团购产品",
-          icon: 'el-icon-tickets',
-          hidden: false,
-          roles: ['admin','jerry']
-        }
-      },
-
-      {
-        path: 'sort',
-        component: () => import('@/views/goods/SortNew.vue'),
-        name: 'sort',
-        meta: {
-          title: "产品分类",
-          icon: 'el-icon-tickets',
-          hidden: false,
-          roles: ['admin','jerry']
-        }
-      },
-    ]
-  },
-  {
-    path: '/control',
-    component: Layout,
-    redirect: '/control/keycode',
-    meta:{
-      title: "用户/订单管理",
-      icon: 'el-icon-s-platform',
-      hidden: false,
-    },
-    children: [
-      {
-        path: 'offindex',
-        component: () => import('@/views/goods/OffIndex.vue'),
-        name: 'offindex',
-        meta: {
-          title: "用户订单管理",
-          icon: 'el-icon-tickets',
-          hidden: false,
-          roles: ['admin','jerry']
-        }
-      },
-      {
-        path: 'user',
-        component: () => import('@/views/goods/User.vue'),
-        name: 'user',
-        meta: {
-          title: "用户管理",
-          icon: 'el-icon-tickets',
-          hidden: false,
-          roles: ['admin','jerry']
-        }
-      }
-    ]
-  },
+  // {
+  //   path: '/goods',
+  //   component: Layout,
+  //   redirect: '/goods/index',
+  //   meta:{
+  //     title: "产品管理",
+  //     icon: 'el-icon-s-goods',
+  //     hidden: false,
+  //   },
+  //   children: [
+  //     {
+  //       path: 'fromgood',
+  //       component: () => import('@/views/goods/FromGood.vue'),
+  //       name: 'fromgood',
+  //       meta: {
+  //         title: "添加(编辑产品)",
+  //         icon: 'el-icon-tickets',
+  //         hidden: true,
+  //         roles: ['admin','jerry'],
+  //
+  //       }
+  //     },
+  //     {
+  //       path: 'onindex',
+  //       component: () => import('@/views/goods/merchandise.vue'),
+  //       // component: () => import('@/views/goods/OnIndex.vue'),
+  //       name: 'onindex',
+  //       meta: {
+  //         title: "生活团购产品",
+  //         icon: 'el-icon-tickets',
+  //         hidden: false,
+  //         roles: ['admin','jerry']
+  //       }
+  //     },
+  //
+  //     {
+  //       path: 'sort',
+  //       component: () => import('@/views/goods/SortNew.vue'),
+  //       name: 'sort',
+  //       meta: {
+  //         title: "产品分类",
+  //         icon: 'el-icon-tickets',
+  //         hidden: false,
+  //         roles: ['admin','jerry']
+  //       }
+  //     },
+  //   ]
+  // },
+  // {
+  //   path: '/control',
+  //   component: Layout,
+  //   redirect: '/control/keycode',
+  //   meta:{
+  //     title: "用户/订单管理",
+  //     icon: 'el-icon-s-platform',
+  //     hidden: false,
+  //   },
+  //   children: [
+  //     {
+  //       path: 'offindex',
+  //       component: () => import('@/views/goods/OffIndex.vue'),
+  //       name: 'offindex',
+  //       meta: {
+  //         title: "用户订单管理",
+  //         icon: 'el-icon-tickets',
+  //         hidden: false,
+  //         roles: ['admin','jerry']
+  //       }
+  //     },
+  //     {
+  //       path: 'user',
+  //       component: () => import('@/views/goods/User.vue'),
+  //       name: 'user',
+  //       meta: {
+  //         title: "用户管理",
+  //         icon: 'el-icon-tickets',
+  //         hidden: false,
+  //         roles: ['admin','jerry']
+  //       }
+  //     }
+  //   ]
+  // },
   {
     path: '/doctorManage',
     component: Layout,
@@ -139,13 +139,13 @@ export const asyncRoutes = [
     },
     children: [
       {
-        path: 'fromgood',
-        component: () => import('@/views/doctorManage/FromGood.vue'),
-        name: 'fromgood',
+        path: 'timetable',
+        component: () => import('@/views/adminManage/timetable.vue'),
+        name: 'timetable',
         meta: {
-          title: "添加(编辑产品)",
+          title: "功课管理",
           icon: 'el-icon-tickets',
-          hidden: true,
+          hidden: false,
           roles: ['admin','jerry'],
 
         }
@@ -209,42 +209,10 @@ export const asyncRoutes = [
         }
       }
     ]
-  },
+  }
 
-  {
-    path: '/doctor',
-    component: Layout,
-    redirect: '/doctor/keycode',
-    meta:{
-      title: "病人管理",
-      icon: 'el-icon-s-platform',
-      hidden: false,
-    },
-    children: [
-      {
-        path: 'offindex',
-        component: () => import('@/views/doctorManage/OffIndex.vue'),
-        name: 'offindex',
-        meta: {
-          title: "用户订单管理",
-          icon: 'el-icon-tickets',
-          hidden: false,
-          roles: ['admin','jerry']
-        }
-      },
-      {
-        path: 'user',
-        component: () => import('@/views/doctorManage/UserOrder.vue'),
-        name: 'user',
-        meta: {
-          title: "病患列表",
-          icon: 'el-icon-tickets',
-          hidden: false,
-          roles: ['admin','jerry']
-        }
-      }
-    ]
-  },
+
+
 ]
 
 const router = new VueRouter({

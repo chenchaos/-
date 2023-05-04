@@ -12,6 +12,7 @@ import com.example.tuangou.mapper.doctor.chnl.*;
 import com.example.tuangou.mapper.teacher.CourseMapper;
 import com.example.tuangou.mapper.teacher.StudentMapper;
 import com.example.tuangou.mapper.teacher.TeacherMapper;
+import com.example.tuangou.mapper.teacher.TimetableMapper;
 import com.example.tuangou.pojo.doctor.*;
 import com.example.tuangou.pojo.mng.Img;
 import com.example.tuangou.pojo.result.Result;
@@ -19,10 +20,7 @@ import com.example.tuangou.pojo.teacher.*;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -58,6 +56,11 @@ public class TeacherController {
 
     @Autowired
     private CourseMapper courseMapper;
+
+
+    @Autowired
+    private TimetableMapper timetableMapper;
+
 
     /**
      * 新增教师
@@ -162,7 +165,7 @@ public class TeacherController {
             @RequestBody JSONObject jsonParam){
         Map result  = null;
         try {
-            result =Result.Result("1", "查询教师分页成功");
+            result =Result.Result("1", "查询学生分页成功");
             int start =(Integer)jsonParam.get("start");
             int limit =(Integer)jsonParam.get("limit");
             Object name =jsonParam.get("name");
@@ -245,5 +248,258 @@ public class TeacherController {
 
         return result;
     }
+
+
+    /**
+     * 查询教师信息（根据教师id查询）
+     * @return
+     */
+    @RequestMapping(
+            value = {"/getTeacher"},
+            method = {RequestMethod.POST}
+    )
+    public Map getTeacher(
+            @RequestBody Teacher teacher){
+        Map result  = null;
+        try {
+            result =Result.Result("1", "新增教师成功");
+
+            if (teacher.getTid()==0) {
+                throw  new Exception("参数异常");
+            }
+
+            Teacher loginTeacher = this.teacherMapper.getTeacherByTid(String.valueOf(teacher.getTid()));
+            result.put("loginTeacher", loginTeacher);
+
+        }catch (Exception ex){
+            result =Result.Result("ccs", "新增教师失败");
+            logger.error("新增教师失败",ex);
+        }
+        return result;
+    }
+
+    /********** *********
+     *
+     *    课程管理
+     *
+     * ****************************/
+
+    /**
+     * 新增课程
+     * @return
+     */
+    @RequestMapping(
+            value = {"/addCourse"},
+            method = {RequestMethod.POST}
+    )
+    public Map addCourse(
+            @RequestBody Course course){
+        Map result  = null;
+        try {
+            result =Result.Result("1", "新增课程成功");
+            // 查询老师哪个学院
+            Teacher teacher =  teacherMapper.getTeacherByTid(course.getTid());
+            course.setFaculty(teacher.getFaculty());
+            this.courseMapper.addCourse(course);
+        }catch (Exception ex){
+            result =Result.Result("ccs", "新增课程失败");
+            logger.error("新增课程失败",ex);
+        }
+        return result;
+    }
+
+
+    /**
+     * 查询课程列表（根据教师ID）
+     * @return
+     */
+    @RequestMapping(
+            value = {"/getTeacherCoursePage"},
+            method = {RequestMethod.POST}
+    )
+    public Map getTeacherCoursePage(
+            @RequestBody JSONObject jsonParam){
+        Map result  = null;
+        try {
+            result =Result.Result("1", "查询课程分页成功");
+            int start =(Integer)jsonParam.get("start");
+            int limit =(Integer)jsonParam.get("limit");
+            Object name =jsonParam.get("name");
+            String tid = jsonParam.getString("tid");
+            if (StringUtils.isEmpty(tid)) {
+                throw new Exception("教师ID为空");
+            }
+            String nameStr =null;
+            if(name!=null&&!name.equals("")){
+                nameStr ="%"+name.toString()+"%";
+            }
+            List<Course> courseList = this.courseMapper.getTeacherCourseList(nameStr, start, limit, tid);
+            int courseCount = this.courseMapper.getTeacherCourseCount(nameStr, tid);
+            result.put("rows", courseList);
+            result.put("total", courseCount);
+        }catch (Exception ex){
+            result =Result.Result("ccs", "查询课程分页失败");
+            logger.error("查询课程分页失败",ex);
+        }
+        return result;
+    }
+
+
+    /**
+     * 编辑课程
+     * @return
+     */
+    @RequestMapping(
+            value = {"/editCourse"},
+            method = {RequestMethod.POST}
+    )
+    public Map editCourse(
+            @RequestBody Course course){
+        Map result  = null;
+        try {
+            result =Result.Result("1", "编辑课程成功");
+            this.courseMapper.updateCourse(course);
+        }catch (Exception ex){
+            result =Result.Result("ccs", "编辑课程失败");
+            logger.error("编辑课程失败",ex);
+        }
+        return result;
+    }
+
+    /**
+     * 删除课程
+     * @return
+     */
+    @RequestMapping(
+            value = {"/removeCourse"},
+            method = {RequestMethod.GET}
+    )
+    public Map removeCourse(
+            @RequestParam int kid){
+        Map result  = null;
+        try {
+            result =Result.Result("1", "删除课程成功");
+            // 先查询是否存在评分，有评分记录，不允许删除
+            Kscore kscore = new Kscore();
+            kscore.setKid(kid);
+            List<Kscore> kscoreList = studentMapper.getKscore(kscore);
+            if (kscoreList != null && kscoreList.size()>0) {
+                result =Result.Result("ccs", "该课程存在评分记录，不允许删除");
+                return result;
+            }
+            this.courseMapper.removeCourse(kid);
+        }catch (Exception ex){
+            result =Result.Result("ccs", "删除课程失败");
+            logger.error("删除课程失败",ex);
+        }
+        return result;
+    }
+
+
+
+
+    /********** *********
+     *
+     *    功课表管理
+     *
+     * ****************************/
+
+    /**
+     * 新增功课表
+     * @return
+     */
+    @RequestMapping(
+            value = {"/addTimetable"},
+            method = {RequestMethod.POST}
+    )
+    public Map addTimetable(
+            @RequestBody Timetable timetable){
+        Map result  = null;
+        try {
+            result =Result.Result("1", "新增功课成功");
+
+            this.timetableMapper.addTimetable(timetable);
+        }catch (Exception ex){
+            result =Result.Result("ccs", "新增功课失败");
+            logger.error("新增功课失败",ex);
+        }
+        return result;
+    }
+
+
+    /**
+     * 查询功课列表
+     * @return
+     */
+    @RequestMapping(
+            value = {"/getTeacherTimetablePage"},
+            method = {RequestMethod.POST}
+    )
+    public Map getTeacherTimetablePage(
+            @RequestBody JSONObject jsonParam){
+        Map result  = null;
+        try {
+            result =Result.Result("1", "查询功课分页成功");
+            int start =(Integer)jsonParam.get("start");
+            int limit =(Integer)jsonParam.get("limit");
+            String faculty = jsonParam.getString("faculty");
+            String weekday = jsonParam.getString("weekday");
+
+            List<Timetable> timetableList = timetableMapper.getTeacherTimetableList(start, limit, faculty, weekday);
+            int timetableCount = this.timetableMapper.getTeacherTimetableCount(faculty, weekday);
+            result.put("rows", timetableList);
+            result.put("total", timetableCount);
+        }catch (Exception ex){
+            result =Result.Result("ccs", "查询功课分页失败");
+            logger.error("查询功课分页失败",ex);
+        }
+        return result;
+    }
+
+
+    /**
+     * 编辑功课
+     * @return
+     */
+    @RequestMapping(
+            value = {"/editTimetable"},
+            method = {RequestMethod.POST}
+    )
+    public Map editTimetable(
+            @RequestBody Timetable timetable){
+        Map result  = null;
+        try {
+            result =Result.Result("1", "编辑功课成功");
+            this.timetableMapper.updateTimetable(timetable);
+        }catch (Exception ex){
+            result =Result.Result("ccs", "编辑功课失败");
+            logger.error("编辑功课失败",ex);
+        }
+        return result;
+    }
+
+    /**
+     * 删除功课
+     * @return
+     */
+    @RequestMapping(
+            value = {"/removeTimetable"},
+            method = {RequestMethod.GET}
+    )
+    public Map removeTimetable(
+            @RequestParam int id){
+        Map result  = null;
+        try {
+            result =Result.Result("1", "删除功课成功");
+
+            this.timetableMapper.removeTimetable(id);
+        }catch (Exception ex){
+            result =Result.Result("ccs", "删除功课失败");
+            logger.error("删除功课失败",ex);
+        }
+        return result;
+    }
+
+
 
 }

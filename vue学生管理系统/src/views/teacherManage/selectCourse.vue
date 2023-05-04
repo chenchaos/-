@@ -76,6 +76,8 @@
                   <el-input
                           v-model="scope.row.score"
                           maxlength="120" type='number'
+                          oninput="this.value = this.value && parseInt(this.value);this.value < 0 || this.value>100 && (this.value = 100)"
+
                   />
             </template>
           </el-table-column>
