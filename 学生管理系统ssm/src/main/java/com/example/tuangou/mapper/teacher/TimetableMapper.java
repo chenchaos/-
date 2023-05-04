@@ -71,4 +71,11 @@ public interface TimetableMapper {
 
     @Delete("delete from timetable where id = #{id}")
     int removeTimetable(int id);
+
+    @Select("select count(1) from timetable where weekday=#{weekday} and faculty=#{faculty}")
+    int getTimetable(Timetable timetable);
+
+    // 排除自己
+    @Select("select count(1) from timetable where weekday=#{weekday} and faculty=#{faculty} and id!=#{id}")
+    int getTimetableNotSelf(Timetable timetable);
 }

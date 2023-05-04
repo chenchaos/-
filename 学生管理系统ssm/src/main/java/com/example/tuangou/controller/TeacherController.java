@@ -14,6 +14,7 @@ import com.example.tuangou.mapper.teacher.StudentMapper;
 import com.example.tuangou.mapper.teacher.TeacherMapper;
 import com.example.tuangou.mapper.teacher.TimetableMapper;
 import com.example.tuangou.pojo.doctor.*;
+import com.example.tuangou.pojo.enums.WeekDay;
 import com.example.tuangou.pojo.mng.Img;
 import com.example.tuangou.pojo.result.Result;
 import com.example.tuangou.pojo.teacher.*;
@@ -417,7 +418,21 @@ public class TeacherController {
         Map result  = null;
         try {
             result =Result.Result("1", "新增功课成功");
-
+            // 判断是否已存在
+            int count = timetableMapper.getTimetable(timetable);
+            if (count > 0) {
+                // 获取中文
+                String weekday="";
+                for(WeekDay w: WeekDay.values()){
+                    String day = timetable.getWeekday();
+                    if (w.getCode().equals(day)) {
+                        weekday = w.getMessage();
+                        break;
+                    }
+                }
+                result =Result.Result("ccs", timetable.getFaculty() + "已存在" + weekday + "的功课，不能新增");
+                return result;
+            }
             this.timetableMapper.addTimetable(timetable);
         }catch (Exception ex){
             result =Result.Result("ccs", "新增功课失败");
@@ -470,6 +485,22 @@ public class TeacherController {
         Map result  = null;
         try {
             result =Result.Result("1", "编辑功课成功");
+            // 判断是否已存在
+            int count = timetableMapper.getTimetableNotSelf(timetable);
+            if (count > 0) {
+                // 获取中文
+                String weekday="";
+                for(WeekDay w: WeekDay.values()){
+                    String day = timetable.getWeekday();
+                    if (w.getCode().equals(day)) {
+                        weekday = w.getMessage();
+                        break;
+                    }
+                }
+                result =Result.Result("ccs", timetable.getFaculty() + "已存在" + weekday + "的功课,不能编辑");
+                return result;
+            }
+
             this.timetableMapper.updateTimetable(timetable);
         }catch (Exception ex){
             result =Result.Result("ccs", "编辑功课失败");

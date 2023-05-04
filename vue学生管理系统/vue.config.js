@@ -4,9 +4,9 @@ module.exports = {
     productionSourceMap: false,
     chainWebpack: (config) => {
         const svgRule = config.module.rule('svg');
-     
+
         svgRule.uses.clear();
-     
+
         svgRule
           .use('babel-loader')
           .loader('babel-loader')
@@ -16,9 +16,10 @@ module.exports = {
       },
        //2.配置跨域
        devServer: {
-        open: true,
+           disableHostCheck: true,
+           open: true,
         host: 'localhost',
-        port: 8080, 
+        port: 8080,
         https: false,
         hotOnly: false,
         // http 代理配置
