@@ -103,6 +103,17 @@ export default {
           hidden: false,
           roles: ['admin','jerry']
         }
+      },
+      {
+        path: 'askleave',
+        component: () => import('@/views/teacherManage/askleave.vue'),
+        name: 'askleave',
+        meta: {
+          title: "请假管理",
+          icon: 'el-icon-tickets',
+          hidden: false,
+          roles: ['admin','jerry']
+        }
       }
     ]
   }]

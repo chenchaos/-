@@ -9,10 +9,7 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.example.tuangou.mapper.Merchandiseapper;
 import com.example.tuangou.mapper.doctor.chnl.*;
-import com.example.tuangou.mapper.teacher.CourseMapper;
-import com.example.tuangou.mapper.teacher.StudentMapper;
-import com.example.tuangou.mapper.teacher.TeacherMapper;
-import com.example.tuangou.mapper.teacher.TimetableMapper;
+import com.example.tuangou.mapper.teacher.*;
 import com.example.tuangou.pojo.doctor.*;
 import com.example.tuangou.pojo.enums.WeekDay;
 import com.example.tuangou.pojo.mng.Img;
@@ -62,6 +59,9 @@ public class TeacherController {
     @Autowired
     private TimetableMapper timetableMapper;
 
+
+    @Autowired
+    private AskLeaveMapper askLeaveMapper;
 
     /**
      * 新增教师
@@ -531,6 +531,37 @@ public class TeacherController {
         return result;
     }
 
+
+
+    /**
+     * 查询学生请假单列表
+     * @return
+     */
+    @RequestMapping(
+            value = {"/getTeacherAskLeavePage"},
+            method = {RequestMethod.POST}
+    )
+    public Map getTeacherAskLeavePage(
+            @RequestBody JSONObject jsonParam) {
+        Map result  = null;
+        try {
+            result =Result.Result("1", "查询请假单分页成功");
+            int start =(Integer)jsonParam.get("start");
+            int limit =(Integer)jsonParam.get("limit");
+            int tid = jsonParam.getInteger("tid");// 教师id
+            int sid = jsonParam.getInteger("sid"); //学生id
+            String name = jsonParam.getString("name");//学生姓名
+
+            List<AskLeave> askLeaveList = askLeaveMapper.getTeacherAskLeaveList(start, limit, sid, tid, name);
+            int askLeaveCount = this.askLeaveMapper.getTeacherAskLeaveCount(sid, tid, name);
+            result.put("rows", askLeaveList);
+            result.put("total", askLeaveCount);
+        }catch (Exception ex){
+            result =Result.Result("ccs", "查询请假单分页失败");
+            logger.error("查询请假单分页失败",ex);
+        }
+        return result;
+    }
 
 
 }
